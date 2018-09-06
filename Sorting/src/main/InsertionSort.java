@@ -3,7 +3,15 @@ package main;
 /**
  * 概述：插入排序
  * <p>
- * <p>详述：
+ * <p>详述：a[i]项与其左边的a[i-1]项对比，小于则交换值
+ * a[i-1]与a[i-2]比较，小于则交换值
+ * 依次进行
+ * ...
+ * a[1]与a[0]比较，小于则交换值
+ * 这时，a[0] ~ a[i]的项就已被完全排序。
+ * <p>
+ * i从1开始自增1，travel from left to right，依次进行上面的操作，
+ * 直到i=N-1这一次循环结束，整个数组就被完全排序了。
  *
  * @author zhangjianghao on 2018-09-05.
  */
@@ -12,6 +20,13 @@ public class InsertionSort {
     public static void sort(Comparable[] a) {
         int N = a.length;
 
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
+                exch(a, j, j - 1);
+
+                show(a);
+            }
+        }
     }
 
     /**
@@ -22,6 +37,8 @@ public class InsertionSort {
      * @return
      */
     private static boolean less(Comparable a, Comparable b) {
+        System.out.println("次数");
+
         return a.compareTo(b) < 0;
     }
 
@@ -45,7 +62,7 @@ public class InsertionSort {
      */
     private static void show(Comparable[] a) {
         for (Comparable anA : a) {
-            System.out.println(anA + "\t");
+            System.out.print(anA + "\t");
         }
     }
 
@@ -70,7 +87,8 @@ public class InsertionSort {
      * @param args
      */
     public static void main(String[] args) {
-        String[] a = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+//        String[] a = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+        String[] a = {"a", "c", "o", "s"};
         sort(a);
         assert isSorted(a);
         show(a);
