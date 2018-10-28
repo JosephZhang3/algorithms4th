@@ -64,7 +64,7 @@ public class SelectionSort {
      */
     private static void show(Comparable[] a) {
         for (Comparable anA : a) {
-            System.out.println(anA + "\t");
+            System.out.print(anA + "\t");
         }
     }
 

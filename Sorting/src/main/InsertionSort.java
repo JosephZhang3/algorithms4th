@@ -30,6 +30,25 @@ public class InsertionSort {
     }
 
     /**
+     * 优化后的插入排序
+     *
+     * @param a
+     */
+    public static void enhancedSort(Comparable[] a) {
+        int N = a.length;
+
+        for (int i = 1; i < N; i++) {
+            Comparable cur = a[i];
+            for (int j = i; j > 0; j--) {
+                if (less(cur, a[j - 1])) {
+                    a[j] = a[j - 1];
+                    a[j - 1] = cur;
+                }
+            }
+        }
+    }
+
+    /**
      * 如果a比b小，返回true
      *
      * @param a
@@ -37,8 +56,10 @@ public class InsertionSort {
      * @return
      */
     private static boolean less(Comparable a, Comparable b) {
-        System.out.println("次数");
+        System.out.println("比较次数");
+if(a != null){
 
+}
         return a.compareTo(b) < 0;
     }
 
@@ -73,7 +94,7 @@ public class InsertionSort {
      * @return
      */
     private static boolean isSorted(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 1; i < a.length; i++) {
             if (less(a[i], a[i - 1])) {
                 return false;
             }
@@ -87,10 +108,13 @@ public class InsertionSort {
      * @param args
      */
     public static void main(String[] args) {
-//        String[] a = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
-        String[] a = {"a", "c", "o", "s"};
-        sort(a);
+        String[] a = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
+//        String[] a = {"a", "c", "o", "s"};
+
+//        sort(a);
+        enhancedSort(a);
         assert isSorted(a);
         show(a);
+
     }
 }
