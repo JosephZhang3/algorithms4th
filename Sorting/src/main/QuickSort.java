@@ -1,4 +1,4 @@
-package main.quicksort;
+package main;
 
 /**
  * 快速排序流行的原因

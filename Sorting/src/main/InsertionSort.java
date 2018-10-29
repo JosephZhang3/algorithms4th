@@ -57,9 +57,9 @@ public class InsertionSort {
      */
     private static boolean less(Comparable a, Comparable b) {
         System.out.println("比较次数");
-if(a != null){
+        if (a != null) {
 
-}
+        }
         return a.compareTo(b) < 0;
     }
 
