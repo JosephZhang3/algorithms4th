@@ -45,7 +45,7 @@
  *
  ******************************************************************************/
 
-package main.util;
+package util;
 
 import java.util.Random;
 

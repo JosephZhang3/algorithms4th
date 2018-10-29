@@ -1,7 +1,6 @@
-package main;
+package sorting;
 
-import main.util.Operate;
-import main.util.Test;
+import util.*;
 
 /**
  * 概述：选择排序

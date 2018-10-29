@@ -1,6 +1,6 @@
-package main.util;
+package util;
 
-import main.InsertionSort;
+import sorting.InsertionSort;
 
 /**
  * 主测试类，测试各种排序的性能

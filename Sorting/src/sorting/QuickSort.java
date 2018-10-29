@@ -1,8 +1,6 @@
-package main;
+package sorting;
 
-import main.util.Operate;
-import main.util.StdRandom;
-import main.util.Test;
+import util.*;
 
 /**
  * 快速排序流行的原因

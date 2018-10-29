@@ -1,4 +1,4 @@
-package main;
+package sorting;
 
 /**
  * 一个例子结构组织良好的排序类的示例
