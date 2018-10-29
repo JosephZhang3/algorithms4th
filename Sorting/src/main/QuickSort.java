@@ -53,7 +53,7 @@ public class QuickSort {
                 }
             }
             while (Operate.less(v, a[--j])) {
-                if (j == lo) {
+                if (j == lo) {--
                     break;
                 }
             }
