@@ -1,11 +1,7 @@
 package main;
 
 /**
- * 概述：
- * <p>
- * <p>详述：
- *
- * @author zhangjianghao on 2018-09-03.
+ * 一个例子结构组织良好的排序类的示例
  */
 public class Example {
 
@@ -65,6 +61,7 @@ public class Example {
 
     /**
      * 主方法，排序->断言->显示排序后结果
+     *
      * @param args
      */
     public static void main(String[] args) {
