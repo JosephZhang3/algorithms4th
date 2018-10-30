@@ -23,9 +23,7 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-//        int[] whiteList =
-
-        int[] a = {8, 7, 4, 9, 11};
-        System.out.println(rank(9, a));
+        int[] a = {4, 7, 8, 9, 11};
+        System.out.println(rank(8, a));
     }
 }
