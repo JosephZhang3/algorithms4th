@@ -29,7 +29,7 @@ import java.util.Locale;
  *  Here is an example program that uses {@code StdOut}:
  *  <pre>
  *   public class TestStdOut {
- *       public static void sorting(String[] args) {
+ *       public static void sort(String[] args) {
  *           int a = 17;
  *           int b = 23;
  *           int sum = a + b;

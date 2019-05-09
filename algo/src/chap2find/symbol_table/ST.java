@@ -1,4 +1,4 @@
-package find.symbol_table;
+package chap2find.symbol_table;
 
 import java.util.HashMap;
 import java.util.Map;

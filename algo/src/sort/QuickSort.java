@@ -1,4 +1,4 @@
-package sorting;
+package sort;
 
 import util.*;
 
@@ -39,7 +39,7 @@ public class QuickSort {
     }
 
     /**
-     * 把数组a切分
+     * 切分数组
      */
     private static int partition(Comparable[] a, int lo, int hi) {
         int i = lo, j = hi + 1;

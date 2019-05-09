@@ -1,6 +1,6 @@
 package util;
 
-import sorting.InsertionSort;
+import sort.InsertionSort;
 
 /**
  * 主测试类，测试各种排序的性能
@@ -8,7 +8,7 @@ import sorting.InsertionSort;
 public class Test {
 
     /**
-     * 主方法，排序->断言->显示排序后结果
+     * 执行排序->断言检测->显示排序后结果
      *
      * @param args
      */

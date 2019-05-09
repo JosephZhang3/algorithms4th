@@ -1,17 +1,13 @@
-package sorting;
+package sort;
 
 import java.util.Random;
 
 /**
- * 概述：
- * <p>
- * <p>详述：
- *
- * @author zhangjianghao on 2018-09-07.
+ * 粗略比较排序算法的性能，只使用随机数，没有考虑特殊情况的输入
  */
 public class SortCompare {
 
-    public static double time(String alg, Comparable[] a) {
+    private static double time(String alg, Comparable[] a) {
         long beginTime = System.nanoTime();
         if (alg.equals("Insertion")) InsertionSort.sort(a);
         if (alg.equals("Selection")) SelectionSort.sort(a);
@@ -27,7 +23,7 @@ public class SortCompare {
      * @param T   实验次数
      * @return 平均每次实验耗费的时间
      */
-    public static double timeRandomInput(String alg, int N, int T) {
+    private static double timeRandomInput(String alg, int N, int T) {
         double total = 0.0;
         Double[] a = new Double[N];//随机生成的数组
         for (int t = 0; t < T; t++) {

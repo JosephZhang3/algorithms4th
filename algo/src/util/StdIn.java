@@ -154,7 +154,7 @@ import java.util.regex.Pattern;
  *  <b>Differences with Scanner.</b>
  *  {@code StdIn} and {@link Scanner} are both designed to parse 
  *  tokens and convert them to primitive types and strings.
- *  The sorting differences are summarized below:
+ *  The sort differences are summarized below:
  *  <ul>
  *  <li> {@code StdIn} is a set of static methods and reads 
  *       reads input from only standard input. It is suitable for use before
