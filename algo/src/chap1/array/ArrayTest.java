@@ -1,4 +1,4 @@
-package array;
+package chap1.array;
 
 /**
  * 正确使用数组

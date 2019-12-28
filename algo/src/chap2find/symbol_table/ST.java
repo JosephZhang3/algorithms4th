@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * 符号表
  */
 public class ST<Key, Value> {
 

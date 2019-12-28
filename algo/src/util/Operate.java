@@ -66,14 +66,14 @@ public class Operate {
     }
 
     /***************************************************************************
-     *  Check if array is sorted - useful for debugging.
+     *  Check if chap1.array is sorted - useful for debugging.
      *  检查数组是否已经排好序
      ***************************************************************************/
     public static boolean isSorted(Comparable[] a) {
         return isSorted(a, 0, a.length);
     }
 
-    // is the array a[lo..hi) sorted
+    // is the chap1.array a[lo..hi) sorted
     public static boolean isSorted(Comparable[] a, int lo, int hi) {
         for (int i = lo + 1; i < hi; i++)
             if (less(a[i], a[i - 1])) return false;
@@ -85,14 +85,14 @@ public class Operate {
         return isSorted(a, 0, a.length, comparator);
     }
 
-    // is the array a[lo..hi) sorted
+    // is the chap1.array a[lo..hi) sorted
     public static boolean isSorted(Object[] a, int lo, int hi, Comparator comparator) {
         for (int i = lo + 1; i < hi; i++)
             if (less(a[i], a[i - 1], comparator)) return false;
         return true;
     }
 
-    // print array to standard output
+    // print chap1.array to standard output
     public static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
             StdOut.println(a[i]);

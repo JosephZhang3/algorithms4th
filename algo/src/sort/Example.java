@@ -1,7 +1,8 @@
 package sort;
 
 /**
- * 一个例子结构组织良好的排序类的示例
+ * 一个例子结构组织良好的排序类的示例，包含
+ * 比较、交换、顺序验证、打印等子方法
  */
 public class Example {
 
@@ -34,17 +35,6 @@ public class Example {
     }
 
     /**
-     * 遍历数组中各个元素的值
-     *
-     * @param a
-     */
-    private static void show(Comparable[] a) {
-        for (Comparable anA : a) {
-            System.out.println(anA + "\t");
-        }
-    }
-
-    /**
      * 判断数组是否已经被从小到大正确排序
      *
      * @param a
@@ -57,6 +47,17 @@ public class Example {
             }
         }
         return true;
+    }
+
+    /**
+     * 遍历打印数组中各个元素的值
+     *
+     * @param a
+     */
+    private static void show(Comparable[] a) {
+        for (Comparable anA : a) {
+            System.out.println(anA + "\t");
+        }
     }
 
     /**

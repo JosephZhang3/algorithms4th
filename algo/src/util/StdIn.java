@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  *  <li>those for reading characters from standard input, one at a time
  *  <li>those for reading lines from standard input, one at a time
  *  <li>those for reading a sequence of values of the same type from standard input,
- *      and returning the values in an array
+ *      and returning the values in an chap1.array
  *  </ul>
  *  <p>
  *  Generally, it is best not to mix functions from the different
@@ -141,12 +141,12 @@ import java.util.regex.Pattern;
  *  the specified type, as in the corresponding
  *  {@code readDouble}, {@code readInt}, and {@code readString()} methods.
  *  The {@code readAllLines()} method reads all remaining lines on standard
- *  input and returns them as an array of strings.
+ *  input and returns them as an chap1.array of strings.
  *  The {@code readAll()} method reads all remaining input on standard
  *  input and returns it as a string.
  *  <p>
  *  As an example, the following code fragment reads all of the remaining
- *  tokens from standard input and returns them as an array of strings.
+ *  tokens from standard input and returns them as an chap1.array of strings.
  *  <pre>
  *  String[] words = StdIn.readAllStrings();
  *  </pre>
@@ -510,9 +510,9 @@ public final class StdIn {
     }
 
     /**
-     * Reads all remaining tokens from standard input and returns them as an array of strings.
+     * Reads all remaining tokens from standard input and returns them as an chap1.array of strings.
      *
-     * @return all remaining tokens on standard input, as an array of strings
+     * @return all remaining tokens on standard input, as an chap1.array of strings
      */
     public static String[] readAllStrings() {
         // we could use readAll.trim().split(), but that's not consistent
@@ -529,8 +529,8 @@ public final class StdIn {
     }
 
     /**
-     * Reads all remaining lines from standard input and returns them as an array of strings.
-     * @return all remaining lines on standard input, as an array of strings
+     * Reads all remaining lines from standard input and returns them as an chap1.array of strings.
+     * @return all remaining lines on standard input, as an chap1.array of strings
      */
     public static String[] readAllLines() {
         ArrayList<String> lines = new ArrayList<String>();
@@ -542,8 +542,8 @@ public final class StdIn {
 
     /**
      * Reads all remaining tokens from standard input, parses them as integers, and returns
-     * them as an array of integers.
-     * @return all remaining integers on standard input, as an array
+     * them as an chap1.array of integers.
+     * @return all remaining integers on standard input, as an chap1.array
      * @throws InputMismatchException if any token cannot be parsed as an {@code int}
      */
     public static int[] readAllInts() {
@@ -556,8 +556,8 @@ public final class StdIn {
 
     /**
      * Reads all remaining tokens from standard input, parses them as longs, and returns
-     * them as an array of longs.
-     * @return all remaining longs on standard input, as an array
+     * them as an chap1.array of longs.
+     * @return all remaining longs on standard input, as an chap1.array
      * @throws InputMismatchException if any token cannot be parsed as a {@code long}
      */
     public static long[] readAllLongs() {
@@ -570,8 +570,8 @@ public final class StdIn {
 
     /**
      * Reads all remaining tokens from standard input, parses them as doubles, and returns
-     * them as an array of doubles.
-     * @return all remaining doubles on standard input, as an array
+     * them as an chap1.array of doubles.
+     * @return all remaining doubles on standard input, as an chap1.array
      * @throws InputMismatchException if any token cannot be parsed as a {@code double}
      */
     public static double[] readAllDoubles() {
@@ -604,8 +604,8 @@ public final class StdIn {
 
    /**
      * Reads all remaining tokens, parses them as integers, and returns
-     * them as an array of integers.
-     * @return all remaining integers, as an array
+     * them as an chap1.array of integers.
+     * @return all remaining integers, as an chap1.array
      * @throws InputMismatchException if any token cannot be parsed as an {@code int}
      * @deprecated Replaced by {@link #readAllInts()}.
      */
@@ -616,8 +616,8 @@ public final class StdIn {
 
    /**
      * Reads all remaining tokens, parses them as doubles, and returns
-     * them as an array of doubles.
-     * @return all remaining doubles, as an array
+     * them as an chap1.array of doubles.
+     * @return all remaining doubles, as an chap1.array
      * @throws InputMismatchException if any token cannot be parsed as a {@code double}
      * @deprecated Replaced by {@link #readAllDoubles()}.
      */
@@ -627,8 +627,8 @@ public final class StdIn {
     }
 
    /**
-     * Reads all remaining tokens and returns them as an array of strings.
-     * @return all remaining tokens, as an array of strings
+     * Reads all remaining tokens and returns them as an chap1.array of strings.
+     * @return all remaining tokens, as an chap1.array of strings
      * @deprecated Replaced by {@link #readAllStrings()}.
      */
     @Deprecated

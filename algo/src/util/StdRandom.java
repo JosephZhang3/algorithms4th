@@ -5,7 +5,7 @@
  *
  *  A library of static methods to generate pseudo-random numbers from
  *  different distributions (bernoulli, uniform, gaussian, discrete,
- *  and exponential). Also includes a method for shuffling an array.
+ *  and exponential). Also includes a method for shuffling an chap1.array.
  *
  *
  *  %  java StdRandom 5
@@ -54,13 +54,13 @@ import java.util.Random;
  *  random number from various discrete and continuous distributions, 
  *  including uniform, Bernoulli, geometric, Gaussian, exponential, Pareto,
  *  Poisson, and Cauchy. It also provides method for shuffling an
- *  array or subarray and generating random permutations.
+ *  chap1.array or subarray and generating random permutations.
  *  <p>
  *  By convention, all intervals are half open. For example,
  *  <code>uniform(-1.0, 1.0)</code> returns a random number between
  *  <code>-1.0</code> (inclusive) and <code>1.0</code> (exclusive).
  *  Similarly, <code>shuffle(a, lo, hi)</code> shuffles the <code>hi - lo</code>
- *  elements in the array <code>a[]</code>, starting at index <code>lo</code>
+ *  elements in the chap1.array <code>a[]</code>, starting at index <code>lo</code>
  *  (inclusive) and ending at index <code>hi</code> (exclusive).
  *  <p>
  *  For additional documentation,
@@ -350,20 +350,20 @@ public final class StdRandom {
      * @return a random integer from a discrete distribution:
      *         {@code i} with probability {@code probabilities[i]}
      * @throws IllegalArgumentException if {@code probabilities} is {@code null}
-     * @throws IllegalArgumentException if sum of array entries is not (very nearly) equal to {@code 1.0}
+     * @throws IllegalArgumentException if sum of chap1.array entries is not (very nearly) equal to {@code 1.0}
      * @throws IllegalArgumentException unless {@code probabilities[i] >= 0.0} for each index {@code i}
      */
     public static int discrete(double[] probabilities) {
-        if (probabilities == null) throw new IllegalArgumentException("argument array is null");
+        if (probabilities == null) throw new IllegalArgumentException("argument chap1.array is null");
         double EPSILON = 1E-14;
         double sum = 0.0;
         for (int i = 0; i < probabilities.length; i++) {
             if (!(probabilities[i] >= 0.0))
-                throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + probabilities[i]);
+                throw new IllegalArgumentException("chap1.array entry " + i + " must be nonnegative: " + probabilities[i]);
             sum += probabilities[i];
         }
         if (sum > 1.0 + EPSILON || sum < 1.0 - EPSILON)
-            throw new IllegalArgumentException("sum of array entries does not approximately equal 1.0: " + sum);
+            throw new IllegalArgumentException("sum of chap1.array entries does not approximately equal 1.0: " + sum);
 
         // the for loop may not return a value when both r is (nearly) 1.0 and when the
         // cumulative sum is less than 1.0 (as a result of floating-point roundoff error)
@@ -384,20 +384,20 @@ public final class StdRandom {
      * @return a random integer from a discrete distribution:
      *         {@code i} with probability proportional to {@code frequencies[i]}
      * @throws IllegalArgumentException if {@code frequencies} is {@code null}
-     * @throws IllegalArgumentException if all array entries are {@code 0}
+     * @throws IllegalArgumentException if all chap1.array entries are {@code 0}
      * @throws IllegalArgumentException if {@code frequencies[i]} is negative for any index {@code i}
      * @throws IllegalArgumentException if sum of frequencies exceeds {@code Integer.MAX_VALUE} (2<sup>31</sup> - 1)
      */
     public static int discrete(int[] frequencies) {
-        if (frequencies == null) throw new IllegalArgumentException("argument array is null");
+        if (frequencies == null) throw new IllegalArgumentException("argument chap1.array is null");
         long sum = 0;
         for (int i = 0; i < frequencies.length; i++) {
             if (frequencies[i] < 0)
-                throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + frequencies[i]);
+                throw new IllegalArgumentException("chap1.array entry " + i + " must be nonnegative: " + frequencies[i]);
             sum += frequencies[i];
         }
         if (sum == 0)
-            throw new IllegalArgumentException("at least one array entry must be positive");
+            throw new IllegalArgumentException("at least one chap1.array entry must be positive");
         if (sum >= Integer.MAX_VALUE)
             throw new IllegalArgumentException("sum of frequencies overflows an int");
 
@@ -430,9 +430,9 @@ public final class StdRandom {
     }
 
     /**
-     * Rearranges the elements of the specified array in uniformly random order.
+     * Rearranges the elements of the specified chap1.array in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(Object[] a) {
@@ -447,9 +447,9 @@ public final class StdRandom {
     }
 
     /**
-     * Rearranges the elements of the specified array in uniformly random order.
+     * Rearranges the elements of the specified chap1.array in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(double[] a) {
@@ -464,9 +464,9 @@ public final class StdRandom {
     }
 
     /**
-     * Rearranges the elements of the specified array in uniformly random order.
+     * Rearranges the elements of the specified chap1.array in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(int[] a) {
@@ -481,9 +481,9 @@ public final class StdRandom {
     }
 
     /**
-     * Rearranges the elements of the specified array in uniformly random order.
+     * Rearranges the elements of the specified chap1.array in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(char[] a) {
@@ -500,7 +500,7 @@ public final class StdRandom {
     /**
      * Rearranges the elements of the specified subarray in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @param  lo the left endpoint (inclusive)
      * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
@@ -522,7 +522,7 @@ public final class StdRandom {
     /**
      * Rearranges the elements of the specified subarray in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @param  lo the left endpoint (inclusive)
      * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
@@ -543,7 +543,7 @@ public final class StdRandom {
     /**
      * Rearranges the elements of the specified subarray in uniformly random order.
      *
-     * @param  a the array to shuffle
+     * @param  a the chap1.array to shuffle
      * @param  lo the left endpoint (inclusive)
      * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
@@ -566,7 +566,7 @@ public final class StdRandom {
      *
      * @param  n number of elements
      * @throws IllegalArgumentException if {@code n} is negative
-     * @return an array of length {@code n} that is a uniformly random permutation
+     * @return an chap1.array of length {@code n} that is a uniformly random permutation
      *         of {@code 0}, {@code 1}, ..., {@code n-1}
      */
     public static int[] permutation(int n) {
@@ -585,7 +585,7 @@ public final class StdRandom {
      * @param  k number of elements to select
      * @throws IllegalArgumentException if {@code n} is negative
      * @throws IllegalArgumentException unless {@code 0 <= k <= n}
-     * @return an array of length {@code k} that is a uniformly random permutation
+     * @return an chap1.array of length {@code k} that is a uniformly random permutation
      *         of {@code k} of the elements from {@code 0}, {@code 1}, ..., {@code n-1}
      */
     public static int[] permutation(int n, int k) {
