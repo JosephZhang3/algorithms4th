@@ -1,7 +1,7 @@
 package foundation;
 
 /**
- * 二分查找算法，运用前提：输入的数据数组必须是已经排好序的
+ * 二分查找算法，使用的前提：输入的数据数组必须是 “已经排好序的”
  */
 public class BinarySearch {
 
@@ -45,6 +45,11 @@ public class BinarySearch {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args args
+     */
     public static void main(String[] args) {
         int[] a = {4, 7, 8, 9, 11};
 //        System.out.println(rank(8, a));
