@@ -1,5 +1,11 @@
 package chap1.basic_program_model;
 
+import util.In;
+import util.StdIn;
+import util.StdOut;
+
+import java.util.Arrays;
+
 /**
  * 二分查找算法，使用的前提：the data array gave must be 'ordered'
  */
@@ -29,6 +35,7 @@ public class BinarySearch {
     private static int rankRecursive(int key, int[] a, int lo, int hi) {
 
         int mid = lo + (hi - lo) / 2;//中点索引，始终会是一个正整数或者零！
+        System.out.println("ran time once");
         System.out.println("首元素索引" + lo + "，尾元素索引" + hi + "，中点元素索引" + mid);
 
         if (lo <= hi) {//新搜索起点或终点都是正常（在界内）
@@ -56,6 +63,18 @@ public class BinarySearch {
     public static void main(String[] args) {
         int[] a = {4, 7, 8, 9, 11, 23};
 //        System.out.println(rank(8, a));
-        System.out.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
+        //System.out.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
+
+        int[] whiteList = In.readInts(args[0]);
+        Arrays.sort(whiteList);
+        while (!StdIn.isEmpty()) {
+            int key = StdIn.readInt();
+            if (rankRecursive(key, whiteList, 0, whiteList.length) == -1) {
+                StdOut.println(key);
+            } else {
+                System.out.println("matched");
+            }
+        }
     }
+
 }
