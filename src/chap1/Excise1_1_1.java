@@ -70,12 +70,16 @@ public class Excise1_1_1 {
         exercise1_1_7();
 
         System.out.println('b');
-        System.out.println('b'+'c');//the result of plus is int
-        char i = 'a'+4;//implicitly cast int to char
+        System.out.println('b' + 'c');//the result of plus is int
+        char i = 'a' + 4;//implicitly cast int to char
         System.out.println(i);//'e'
-        System.out.println('a'+4);//101
+        System.out.println('a' + 4);//101
 
-        //todo 1.1.9
+        exercise_1_1_9(19);
+
+        exercise_1_1_11();
+
+        exercise_1_1_12();
     }
 
 
@@ -114,5 +118,74 @@ public class Excise1_1_1 {
             }
         }
         StdOut.println(sumtwo);
+    }
+
+    private static void exercise_1_1_9(int N) {
+        String s = "";
+        String s2 = Integer.toBinaryString(N);
+        System.out.println(s2);
+
+        for (int n = N; n > 0; n = n / 2) {
+            s = n % 2 + s;
+        }
+        System.out.println(s);
+    }
+
+    /**
+     * 打印二维布尔数组
+     */
+    private static void exercise_1_1_11() {
+        int m = 3, n = 3;
+        boolean[][] twoDimensionArray = new boolean[m][n];
+        twoDimensionArray[0][0] = true;
+        twoDimensionArray[0][1] = false;
+        twoDimensionArray[0][2] = true;
+        twoDimensionArray[1][0] = false;
+        twoDimensionArray[1][1] = true;
+        twoDimensionArray[1][2] = true;
+        twoDimensionArray[2][0] = true;
+        twoDimensionArray[2][1] = false;
+        twoDimensionArray[2][2] = false;
+
+        System.out.println("打印二维boolean数组：");
+
+        System.out.print(" ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(i + 1);
+        }
+        for (int i = 0; i < m; i++) {
+            System.out.println();
+            System.out.print(i + 1);
+            for (int j = 0; j < n; j++) {
+                if (twoDimensionArray[i][j]) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+        }
+    }
+
+    private static void exercise_1_1_12() {
+        System.out.println();
+        System.out.println("exercise_1_1_12");
+        int[] a = new int[10];
+        for (int i = 0; i < 10; i++) {
+            a[i] = 9 - i;
+        }
+        for (int i = 0; i < 10; i++) {
+            a[i] = a[a[i]];
+        }
+        for (int i = 0; i < 10; i++) {
+            System.out.println(a[i]);
+        }
+    }
+
+    /**
+     * 打印M行N列的二维数组的reverse（exchange row with column）
+     */
+    private static void exercise_1_1_13(){
+
     }
 }
