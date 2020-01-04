@@ -7,28 +7,6 @@ import util.StdOut;
  * todo 练习1.1.25 数学归纳法证明
  */
 public class Excise1_1 {
-    public static void main(String[] args) {
-
-        exercise1_1_1();
-
-        exercise1_1_2();
-
-        exercise1_1_3();
-
-        exercise1_1_4();
-
-        exercise1_1_5();
-
-        exercise1_1_6();
-
-        exercise_1_1_9();
-
-        exercise_1_1_11();
-
-        exercise_1_1_12();
-
-        exercise_1_1_13();
-    }
 
     private static void exercise1_1_1() {
         System.out.println((0 + 15) / 2);//7
@@ -224,6 +202,78 @@ public class Excise1_1 {
     }
 
     private static void exercise_1_1_14() {
-        System.out.println(2 ^ 4);
+        System.out.println(lg(129));
+    }
+
+    private static int lg(int N) {
+        if (N < 1) {
+            throw new IllegalArgumentException("N必须是不小于1的正实数");
+        }
+
+        int i = 0;
+        while (N > 1) {
+            N = N / 2;
+            ++i;
+        }
+        return i;//2的i次幂小于等于N
+    }
+
+    private static void exercise_1_1_15() {
+        int[] r = histogram(new int[]{1, 2, 3, 1, 1, 3, 3, 3, 3, 11, 12}, 3);
+        for (int i : r) {
+            System.out.print(i + "  ");
+        }
+        System.out.println();
+    }
+
+    private static int[] histogram(int[] a, int M) {
+        int[] r = new int[M];
+
+        //要求：返回数组r，数组r中第i个元素的值为整数i在参数数组a中出现的次数，
+        // 如果数组a中的值均在0到M-1之间，返回的数组r中所有元素之和应该和a.length相等
+
+        for (int i = 0; i < M; i++) {
+            //本质就是计算整数i+1在数组a中出现的次数
+            int times = 0;
+            for (int anA : a) {
+                if (anA == i + 1) {
+                    times++;
+                }
+            }
+            r[i] = times;
+        }
+
+        return r;
+    }
+
+    public static void main(String[] args) {
+
+        /*
+        exercise1_1_1();
+
+        exercise1_1_2();
+
+        exercise1_1_3();
+
+        exercise1_1_4();
+
+        exercise1_1_5();
+
+        exercise1_1_6();
+
+        exercise_1_1_9();
+
+        exercise_1_1_11();
+
+        exercise_1_1_12();
+
+        exercise_1_1_13();
+
+        exercise_1_1_14();
+
+        exercise_1_1_15();
+        */
+
+
     }
 }
