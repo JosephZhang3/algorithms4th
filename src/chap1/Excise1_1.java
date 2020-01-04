@@ -3,52 +3,79 @@ package chap1;
 import util.StdIn;
 import util.StdOut;
 
-public class Excise1_1_1 {
+/**
+ * todo 练习1.1.25 数学归纳法证明
+ */
+public class Excise1_1 {
     public static void main(String[] args) {
+
+        exercise1_1_1();
+
+        exercise1_1_2();
+
+        exercise1_1_3();
+
+        exercise1_1_4();
+
+        exercise1_1_5();
+
+        exercise1_1_6();
+
+        exercise_1_1_9();
+
+        exercise_1_1_11();
+
+        exercise_1_1_12();
+
+        exercise_1_1_13();
+    }
+
+    private static void exercise1_1_1() {
         System.out.println((0 + 15) / 2);//7
 
         System.out.println(2.0e-6 * 100000000.1);
 
         System.out.println(true && false || true && true);//always true
+    }
 
+    private static void exercise1_1_2() {
         System.out.println((1 + 2.236) / 2);//1.618  整数除以整数，商还是整数  带精度数除以整数，商还是带精度数
-
         System.out.println(1 + 2 + 3 + 4.0);///10.0 float
-
         System.out.println(4.1 >= 4);//true
-
         System.out.println(1 + 2 + "3");//33
 
         int c = '3';
         System.out.println(c);//51 输出的是字符的数值表示
-
         System.out.println(1 + 2 + '3');//54 字符'3'代表一个数值51
+    }
 
-
-        /*int firstInt = StdIn.readInt();
+    private static void exercise1_1_3() {
+        int firstInt = StdIn.readInt();
         int secondInt = StdIn.readInt();
         int thirdInt = StdIn.readInt();
         if (firstInt == secondInt && firstInt == thirdInt) {
             System.out.println("equal");
         } else {
             System.out.println("not equal");
-        }*/
+        }
+    }
 
+    private static void exercise1_1_4() {
         int a = 1, b = 1;
         int d = 1;
         if (a > b)
             d = 0;
         else
             b = 0;
+    }
 
+    private static void exercise1_1_5() {
         double x = 0, y = 1;
         if (x > 0 && x < 1 && y > 0 && y < 1) {
             System.out.println(true);
         } else {
             System.out.println(false);
         }
-
-        exercise1_1_6();
     }
 
     private static void exercise1_1_6() {
@@ -74,14 +101,6 @@ public class Excise1_1_1 {
         char i = 'a' + 4;//implicitly cast int to char
         System.out.println(i);//'e'
         System.out.println('a' + 4);//101
-
-        exercise_1_1_9(19);
-
-        exercise_1_1_11();
-
-        exercise_1_1_12();
-
-        exercise_1_1_13();
     }
 
 
@@ -122,9 +141,9 @@ public class Excise1_1_1 {
         StdOut.println(sumtwo);
     }
 
-    private static void exercise_1_1_9(int N) {
+    private static void exercise_1_1_9() {
         String s = "";
-        String s2 = Integer.toBinaryString(N);
+        String s2 = Integer.toBinaryString(19);
         System.out.println(s2);
 
         for (int n = N; n > 0; n = n / 2) {
@@ -202,5 +221,9 @@ public class Excise1_1_1 {
             System.out.println();
             System.out.println("-------------------");
         }
+    }
+
+    private static void exercise_1_1_14() {
+        System.out.println(2 ^ 4);
     }
 }
