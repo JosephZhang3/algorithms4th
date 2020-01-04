@@ -146,7 +146,7 @@ public class Excise1_1 {
         String s2 = Integer.toBinaryString(19);
         System.out.println(s2);
 
-        for (int n = N; n > 0; n = n / 2) {
+        for (int n = 19; n > 0; n = n / 2) {
             s = n % 2 + s;
         }
         System.out.println(s);
