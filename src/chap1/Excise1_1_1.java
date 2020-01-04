@@ -80,6 +80,8 @@ public class Excise1_1_1 {
         exercise_1_1_11();
 
         exercise_1_1_12();
+
+        exercise_1_1_13();
     }
 
 
@@ -185,7 +187,20 @@ public class Excise1_1_1 {
     /**
      * 打印M行N列的二维数组的reverse（exchange row with column）
      */
-    private static void exercise_1_1_13(){
+    private static void exercise_1_1_13() {
+        int M = 3, N = 2;
+        int[][] origin = {{7, 12}, {9, 8}, {8, 9}};
 
+        System.out.println("-------------------");
+        for (int j = N - 1; j >= 0; --j) {
+            for (int i = 0; i < M; ++i) {
+                if (i != 0) {
+                    System.out.print(" ");
+                }
+                System.out.printf("%5d", origin[i][j]);
+            }
+            System.out.println();
+            System.out.println("-------------------");
+        }
     }
 }
