@@ -3,6 +3,9 @@ package chap1;
 import util.StdIn;
 import util.StdOut;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * todo 练习1.1.25 数学归纳法证明
  */
@@ -292,7 +295,120 @@ public class Excise1_1 {
         return mysteryV2(a * a, b / 2) * a;
     }
 
+    public static void exercise_1_1_19() {
+        for (int i = 0; i < 100; i++) {
+//            System.out.println("N " + fibonacci_recursive(i));
+            System.out.println("N " + fibonacci_cache(i));
+        }
+    }
+
+    /**
+     * 递归算法非常慢，因为随着N增加，计算次数增长速度越来越快
+     *
+     * @param N
+     * @return
+     */
+    private static int fibonacci_recursive(int N) {
+        if (N == 0) {
+            return 0;
+        }
+        if (N == 1) {
+            return 1;
+        }
+        return fibonacci_recursive(N - 1) + fibonacci_recursive(N - 2);
+    }
+
+    private static int fibonacci_cache(int N) {
+        if (N == 0) {
+            return 0;
+        }
+        if (N == 1) {
+            return 1;
+        }
+
+        //使用数组保存中间计算结果，最后返回一个保存fibonacci数列的数组
+//        int[] cache = new int[N];
+//        cache[0] = 0;
+//        cache[1] = 1;
+//
+//        for (int i = 2; i < N; i++) {
+//            cache[i] = cache[i - 2] + cache[i - 1];
+//        }
+//        return cache;
+
+
+        //不保存中间计算结果，返回一个指定位置的fibonacci数
+        int prepre = 0;
+        int pre = 1;
+        int temp = 0;
+        for (int i = 2; i < N; i++) {
+            temp = prepre + pre;
+            prepre = pre;
+            pre = temp;
+        }
+        return temp;
+    }
+
+    private static void exercise_1_1_20() {
+        System.out.println(Math.log1p(calaculateFactorial(6) - 1));
+    }
+
+    private static int calaculateFactorial(int n) {
+        if (n == 1) {
+            return n;
+        }
+        return n * calaculateFactorial(n - 1);
+    }
+
+    public static void exercise_1_1_21() {
+        while (StdIn.hasNextLine()) {
+            String line = StdIn.readLine();
+            String[] members = line.split(" ");
+            int hit = Integer.parseInt(members[1]);
+            int all = Integer.parseInt(members[2]);
+            BigDecimal rate = new BigDecimal(hit).divide(new BigDecimal(all), 3, RoundingMode.HALF_UP);//四舍五入保留3位小数
+            System.out.println(members[0] + "\t" + members[1] + "\t" + members[2] + "\t" + rate.toString());
+        }
+    }
+
+    private static void exercise_1_1_22() {
+        int[] a = {2, 6, 7, 13, 45, 87, 109, 202, 444, 1098, 4567};
+        int key = 45;
+        int val = binarySerachRecursive(a, 0, a.length, key, 0);
+        if (val == -1) {
+            System.out.println("未在数组a中找到数" + key);
+        } else {
+            System.out.println("数" + key + "在数组a中的位置是" + val);
+        }
+    }
+
+    private static int binarySerachRecursive(int[] a, int lo, int hi, int key, int deepth) {
+
+        int mid = (lo + hi) >>> 1;
+
+        if (lo <= hi) {
+            if (key < a[mid]) {
+                hi = mid - 1;
+            } else if (key > a[mid]) {
+                lo = mid + 1;
+            } else {
+                return mid;
+            }
+        } else {
+            return -1;//fail
+        }
+
+        deepth++;
+        for (int i = 0; i < deepth; i++) {
+            System.out.print("  ");
+        }
+        System.out.println(lo + "+" + hi);
+
+        return binarySerachRecursive(a, lo, hi, key, deepth);
+    }
+
     public static void main(String[] args) {
+
 
         /*
         exercise1_1_1();
@@ -322,9 +438,16 @@ public class Excise1_1 {
         exercise_1_1_16();
 
         exercise_1_1_18();
+
+        exercise_1_1_19();
+
+        exercise_1_1_20();
+
+        exercise_1_1_21();
+
         */
 
-
+        exercise_1_1_22();
     }
 
 }
