@@ -66,13 +66,22 @@ public class BinarySearch {
         //System.out.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
 
         int[] whiteList = In.readInts(args[0]);
+        String param = args[1];
+
         Arrays.sort(whiteList);
         while (!StdIn.isEmpty()) {
             int key = StdIn.readInt();
-            if (rankRecursive(key, whiteList, 0, whiteList.length) == -1) {
-                StdOut.println(key);
+            int resultIndex = rankRecursive(key, whiteList, 0, whiteList.length);
+            //add 练习1.1.23 参数+打印出标准输入中不在白名单上的值；-，则打印出标准输入在白名单上的值
+            if (resultIndex == -1) {
+                if ("+".equals(param)) {
+                    StdOut.println(key);//不在白名单上的整数（非法输入）
+                }
             } else {
-                System.out.println("matched");
+                if ("-".equals(param)) {
+                    System.out.print(whiteList[resultIndex]);
+                }
+                System.out.println("    matched");
             }
         }
     }

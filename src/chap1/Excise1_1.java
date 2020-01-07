@@ -407,7 +407,11 @@ public class Excise1_1 {
         return binarySerachRecursive(a, lo, hi, key, deepth);
     }
 
-    public static void main(String[] args) {
+    private static void exercise_1_1_23() {
+
+    }
+
+        public static void main(String[] args) {
 
 
         /*
@@ -445,9 +449,11 @@ public class Excise1_1 {
 
         exercise_1_1_21();
 
+        exercise_1_1_22();
+
         */
 
-        exercise_1_1_22();
+
     }
 
 }
