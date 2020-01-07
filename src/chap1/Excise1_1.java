@@ -407,13 +407,27 @@ public class Excise1_1 {
         return binarySerachRecursive(a, lo, hi, key, deepth);
     }
 
-    private static void exercise_1_1_23() {
-
+    private static void exercise_1_1_24() {
+        int p = 1111111;
+        int q = 1234567;
+        System.out.println("p和q的最大公约数是" + euclid(p, q));
     }
 
-        public static void main(String[] args) {
+    private static int euclid(int p, int q) {
+        System.out.printf("%s%20d%s%20d", "p", p, "\t\tq", q);
+        System.out.println();
 
+        int val = p % q;
+        if (p < q) {
+            val = q % p;
+        }
+        if (val == 0) {
+            return q;
+        }
+        return euclid(q, val);
+    }
 
+    public static void main(String[] args) {
         /*
         exercise1_1_1();
 
@@ -453,7 +467,7 @@ public class Excise1_1 {
 
         */
 
-
+        exercise_1_1_24();
     }
 
 }
