@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class BinarySearch {
 
     //用循环方式实现
-    private static int rank(int key, int[] a) {
+    private static int rankLoop(int key, int[] a) {
         int lo = 0;
         int hi = a.length - 1;
 
@@ -56,12 +56,21 @@ public class BinarySearch {
 
     /**
      * 测试
+     * <p>
+     * zhangjianghao@DESKTOP-B98UJS4 MINGW64 /c/git-repos/algorithm4th/src (master)
+     * $ javac -encoding utf-8 ./chap1/basic_program_model/BinarySearch.java ./util/StdIn.java  ./util/In.java ./util/StdOut.java
+     * Note: .\chap1\basic_program_model\BinarySearch.java uses or overrides a deprecated API.
+     * Note: Recompile with -Xlint:deprecation for details.
+     * <p>
+     * zhangjianghao@DESKTOP-B98UJS4 MINGW64 /c/git-repos/algorithm4th/src (master)
+     * $ java chap1.basic_program_model.BinarySearch ./chap1/basic_program_model/tinyW.txt  -
+     * ȥ▒غ▒▒▒▒▒▒Ԫ▒▒Ϊ   34      435     54645   34534547        34534547        34534547        223423423       0       0
      *
      * @param args args
      */
     public static void main(String[] args) {
 //        int[] a = {4, 7, 8, 9, 11, 23};
-//        System.out.println(rank(8, a));
+//        System.out.println(rankLoop(8, a));
         //System.out.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
 
         int[] whiteList = In.readInts(args[0]);
