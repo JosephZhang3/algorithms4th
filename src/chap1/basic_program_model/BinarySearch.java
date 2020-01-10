@@ -18,7 +18,7 @@ public class BinarySearch {
 
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;//中点
-            System.out.println("首元素索引" + lo + "尾元素索引" + hi + "中点元素索引" + mid);
+            StdOut.println("首元素索引" + lo + "尾元素索引" + hi + "中点元素索引" + mid);
 
             if (key < a[mid]) {
                 hi = mid - 1;
@@ -35,7 +35,7 @@ public class BinarySearch {
     private static int rankRecursive(int key, int[] a, int lo, int hi) {
 
         int mid = lo + (hi - lo) / 2;//中点索引，始终会是一个正整数或者零！
-        System.out.println("首元素索引" + lo + "，尾元素索引" + hi + "，中点元素索引" + mid);
+        StdOut.println("首元素索引" + lo + "，尾元素索引" + hi + "，中点元素索引" + mid);
 
         if (lo <= hi) {//新搜索起点或终点都是正常（在界内）
             if (key < a[mid]) {
@@ -57,6 +57,7 @@ public class BinarySearch {
     /**
      * 测试
      * <p>
+     * 命令行编译运行指令
      * zhangjianghao@DESKTOP-B98UJS4 MINGW64 /c/git-repos/algorithm4th/src (master)
      * $ javac -encoding utf-8 ./chap1/basic_program_model/BinarySearch.java ./util/StdIn.java  ./util/In.java ./util/StdOut.java
      * Note: .\chap1\basic_program_model\BinarySearch.java uses or overrides a deprecated API.
@@ -69,9 +70,24 @@ public class BinarySearch {
      * @param args args
      */
     public static void main(String[] args) {
+
+
+        //练习1.1.129 等值键
+        int[] a = {0, 1, 3, 5, 7, 9, 9, 9, 13, 24, 35, 35, 35, 44, 59, 79};
+        int keyy = 9;
+        int q = rank(keyy, a);
+        int p = count(keyy, a);
+        StdOut.print("与key " + keyy + "等值的元素索引分别是 ");
+        for (int m = q; m >= q && m <= q + p - 1; m++) {
+            StdOut.print(m + "\t");
+        }
+        StdOut.println();
+
+
+
 //        int[] a = {4, 7, 8, 9, 11, 23};
-//        System.out.println(rankLoop(8, a));
-        //System.out.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
+//        StdOut.println(rankLoop(8, a));
+        //StdOut.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
 
         int[] whiteList = In.readInts(args[0]);
         String param = args[1];
@@ -95,11 +111,11 @@ public class BinarySearch {
             }
         }
         whiteList = occurredArray;
-        System.out.print("去重后白名单元素为\t");
+        StdOut.print("去重后白名单元素为\t");
         for (int i : whiteList) {
-            System.out.print(i + "\t");
+            StdOut.print(i + "\t");
         }
-        System.out.println();
+        StdOut.println();
         //练习1.1.28 ... 代码结束
 
 
@@ -113,11 +129,30 @@ public class BinarySearch {
                 }
             } else {
                 if ("-".equals(param)) {
-                    System.out.print(whiteList[resultIndex]);
+                    StdOut.print(whiteList[resultIndex]);
                 }
-                System.out.println("    matched");
+                StdOut.println("    matched");
             }
         }
     }
 
+    private static int rank(int key, int[] a) {
+        int num = 0;
+        for (int i : a) {
+            if (i < key) {
+                ++num;
+            }
+        }
+        return num;
+    }
+
+    private static int count(int key, int[] a) {
+        int num = 0;
+        for (int i : a) {
+            if (i == key) {
+                ++num;
+            }
+        }
+        return num;
+    }
 }
