@@ -427,6 +427,52 @@ public class Excise1_1 {
         return euclid(q, val);
     }
 
+    //todo 练习1.1.25 使用数学归纳法证明Euclid算法，以及，求Euclid算法最坏情况的时间复杂度 https://www.zhihu.com/question/35133122
+
+
+    private static void exercise_1_1_27() {
+//        System.out.println(binomial(100,50,0.25));
+        System.out.println(binomialCache(100, 50, 0.25));
+    }
+
+    private static double binomial(int n, int k, double p) {
+        if (n == 0 && k == 0) {
+            return 1.0;
+        }
+        if (n < 0 || k < 0) {
+            return 0.0;
+        }
+        return (1.0 - p) * binomial(n - 1, k, p) + p * binomial(n - 1, k - 1, p);
+    }
+
+    private static double binomialCache(int n, int k, double p) {
+        if (n == 0 && k == 0) {
+            return 1.0;
+        }
+        if (n < 0 || k < 0) {
+            return 0.0;
+        }
+
+        double[][] cache = new double[n][k];
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < k; j++) {
+                if (i == 1) {
+                    cache[i][j] = 1;
+                    System.out.printf("cache[%d][%d] = 1\n", i, j);
+                } else if (j == 1) {
+                    cache[i][j] = (1.0 - p) * cache[i - 1][j];
+                    System.out.printf("cache[%d][%d] = (1.0 - %f) * cache[%d-1][%d]\n", i, j, p, i, j);
+                } else {
+                    cache[i][j] = (1.0 - p) * cache[i - 1][j] + p * cache[i - 1][j - 1];
+                    System.out.printf("cache[%d][%d] = (1.0 - %f) * cache[%d-1][%d] + %f * cache[%d-1][%d-1]\n", i, j, p, i, j, p, i, j);
+                }
+                System.out.printf("cache[%d][%d] = %.20f\n", i, j, cache[i][j]);
+            }
+        }
+
+        return cache[n - 1][k - 1];
+    }
+
     public static void main(String[] args) {
         /*
         exercise1_1_1();
@@ -465,9 +511,11 @@ public class Excise1_1 {
 
         exercise_1_1_22();
 
+        exercise_1_1_24();
+
         */
 
-        exercise_1_1_24();
+        exercise_1_1_27();
     }
 
 }
