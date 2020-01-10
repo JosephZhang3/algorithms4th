@@ -417,13 +417,20 @@ public class Excise1_1 {
         System.out.printf("%s%20d%s%20d", "p", p, "\t\tq", q);
         System.out.println();
 
-        int val = p % q;
-        if (p < q) {
-            val = q % p;
+        if (p <= 0 || q <= 0) {
+            throw new IllegalArgumentException("要求输入值是正整数");
         }
+
+        if (p < q) {
+            int temp = p;
+            p = q;
+            q = temp;
+        }
+        int val = p % q;
         if (val == 0) {
             return q;
         }
+
         return euclid(q, val);
     }
 
@@ -473,6 +480,20 @@ public class Excise1_1 {
         return cache[n - 1][k - 1];
     }
 
+    private static void exercise_1_1_30() {
+        boolean[][] a = new boolean[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 0 || j == 0) {
+                    a[i][j] = true;
+                } else {
+                    a[i][j] = euclid(i, j) == 1;
+                }
+            }
+        }
+        System.out.println("breakpoint");
+    }
+
     public static void main(String[] args) {
         /*
         exercise1_1_1();
@@ -513,9 +534,11 @@ public class Excise1_1 {
 
         exercise_1_1_24();
 
+        exercise_1_1_27();
+
         */
 
-        exercise_1_1_27();
+        exercise_1_1_30();
     }
 
 }
