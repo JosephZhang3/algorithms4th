@@ -1,5 +1,6 @@
 package chap1;
 
+import util.StdDraw;
 import util.StdIn;
 import util.StdOut;
 
@@ -494,6 +495,52 @@ public class Excise1_1 {
         System.out.println("breakpoint");
     }
 
+    //todo 不会做这一题，直接看解答吧
+    public static void exercise_1_1_31() {
+        int n = StdIn.readInt();
+        double p = StdIn.readDouble();
+
+//        StdDraw.
+    }
+
+    private static void exercise_1_1_32() {
+        int n = StdIn.readInt();
+        double[] ds = StdIn.readAllDoubles();
+        double l = ds[0];//区间起点
+        double r = ds[1];//区间终点
+
+        double per = (r - l) / n;
+        double begin = l;
+        double end;
+        int[] hitNums = new int[n];
+        for (int i = 0; i < n; i++) {
+            end = l + (i + 1) * per;
+            int hitNum = 0;
+            for (double d : ds) {
+                if (d == l || d == r) {
+                    continue;
+                }
+                if (d >= begin && d < end) {
+                    ++hitNum;
+                }
+            }
+            hitNums[i] = hitNum;
+            begin = end;
+        }
+
+        int x = 0;
+        for (int i = 0; i < n; i++) {
+            //todo 无法使用画图工具
+            StdDraw.filledRectangle(x, 0, per / 5, hitNums[i]);
+            x += per / 2;
+        }
+    }
+
+    //todo 矩阵计算不会，回去补线性代数课程，谁让你当初挂科。。。
+    private static void exercise_1_1_33() {
+
+    }
+
     public static void main(String[] args) {
         /*
         exercise1_1_1();
@@ -536,9 +583,11 @@ public class Excise1_1 {
 
         exercise_1_1_27();
 
+        exercise_1_1_30();
+
         */
 
-        exercise_1_1_30();
+        exercise_1_1_32();
     }
 
 }
