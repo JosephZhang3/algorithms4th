@@ -84,14 +84,14 @@ public class BinarySearch {
         StdOut.println();
 
 
-
+        //循环非递归方式实现binarysearch
 //        int[] a = {4, 7, 8, 9, 11, 23};
 //        StdOut.println(rankLoop(8, a));
         //StdOut.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
 
-        int[] whiteList = In.readInts(args[0]);
-        String param = args[1];
 
+        int[] whiteList = In.readInts(args[0]);//从文件中读取整数
+        String param = args[1];//控制台打印选项开关
         Arrays.sort(whiteList);
 
 
