@@ -585,9 +585,78 @@ public class Excise1_1 {
 
         exercise_1_1_30();
 
+        exercise_1_1_32();
         */
 
-        exercise_1_1_32();
+        exercise_1_1_34();
+    }
+
+    private static void exercise_1_1_34() {
+
+//        /**
+//         * 打印出最大和最小的数，不需要保存输入的所有值
+//         */
+//        int max = 0, min = 0;
+//        boolean isFirst = true;
+//        while (!StdIn.isEmpty()) {
+//            int i = StdIn.readInt();
+//
+//            if (isFirst) {
+//                max = i;
+//                min = i;
+//                isFirst = false;
+//                continue;
+//            }
+//
+//            if (i > max) {
+//                max = i;
+//            }
+//            if (i < min) {
+//                min = i;
+//            }
+//        }
+//        System.out.printf("最大的数是%d，最小的数是%d\n", max, min);
+
+
+        /**
+         * 打印出所有数的中位数，不需要保存输入的所有值
+         *//*
+        int sum = 0;
+        int count = 0;
+        while (!StdIn.isEmpty()) {
+            ++count;
+            sum += StdIn.readInt();
+        }
+        StdOut.printf("所有数的中位数是%d\n", sum / count);*/
+
+
+        //the k-th largest number，打印出第k小的数，设k等于26
+        int k = 5;
+        int[] foo = new int[k];
+        int index = 0;
+        while (!StdIn.isEmpty()) {
+            int inNUm = StdIn.readInt();
+
+            if (index < k) {
+                foo[index] = inNUm;
+                ++index;
+                continue;
+            }
+            //保证foo数组中保存的始终是前k大的数（每当读取的数比遍历数组到的数小，就替换）
+            for (int i = 0; i < k; i++) {
+                if (inNUm < foo[i]) {
+                    foo[i] = inNUm;
+                    break;
+                }
+            }
+        }
+        int max = foo[0];
+        for (int aFoo : foo) {
+            if (aFoo > max) {
+                max = aFoo;
+            }
+        }
+        System.out.println("第" + k + "大的数是\t" + max);
     }
 
 }
