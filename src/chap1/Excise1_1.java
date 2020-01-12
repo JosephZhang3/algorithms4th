@@ -3,9 +3,12 @@ package chap1;
 import util.StdDraw;
 import util.StdIn;
 import util.StdOut;
+import util.StdRandom;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import static java.math.RoundingMode.HALF_UP;
 
 /**
  * todo 练习1.1.25 数学归纳法证明
@@ -367,7 +370,7 @@ public class Excise1_1 {
             String[] members = line.split(" ");
             int hit = Integer.parseInt(members[1]);
             int all = Integer.parseInt(members[2]);
-            BigDecimal rate = new BigDecimal(hit).divide(new BigDecimal(all), 3, RoundingMode.HALF_UP);//四舍五入保留3位小数
+            BigDecimal rate = new BigDecimal(hit).divide(new BigDecimal(all), 3, HALF_UP);//四舍五入保留3位小数
             System.out.println(members[0] + "\t" + members[1] + "\t" + members[2] + "\t" + rate.toString());
         }
     }
@@ -541,6 +544,156 @@ public class Excise1_1 {
 
     }
 
+    private static void exercise_1_1_34() {
+
+//        /**
+//         * 打印出最大和最小的数，不需要保存输入的所有值
+//         */
+//        int max = 0, min = 0;
+//        boolean isFirst = true;
+//        while (!StdIn.isEmpty()) {
+//            int i = StdIn.readInt();
+//
+//            if (isFirst) {
+//                max = i;
+//                min = i;
+//                isFirst = false;
+//                continue;
+//            }
+//
+//            if (i > max) {
+//                max = i;
+//            }
+//            if (i < min) {
+//                min = i;
+//            }
+//        }
+//        System.out.printf("最大的数是%d，最小的数是%d\n", max, min);
+
+
+        /**
+         * 打印出所有数的中位数，不需要保存输入的所有值
+         *//*
+        int sum = 0;
+        int count = 0;
+        while (!StdIn.isEmpty()) {
+            ++count;
+            sum += StdIn.readInt();
+        }
+        StdOut.printf("所有数的中位数是%d\n", sum / count);*/
+
+
+        /**
+         //the k-th largest number，打印出第k小的数，设k等于26
+         int k = 5;
+         int[] foo = new int[k];
+         int index = 0;
+         while (!StdIn.isEmpty()) {
+         int inNUm = StdIn.readInt();
+
+         if (index < k) {
+         foo[index] = inNUm;
+         ++index;
+         continue;
+         }
+         //保证foo数组中保存的始终是前k大的数（每当读取的数比遍历数组到的数小，就替换）
+         for (int i = 0; i < k; i++) {
+         if (inNUm < foo[i]) {
+         foo[i] = inNUm;
+         break;
+         }
+         }
+         }
+         int max = foo[0];
+         for (int aFoo : foo) {
+         if (aFoo > max) {
+         max = aFoo;
+         }
+         }
+         System.out.println("第" + k + "大的数是\t" + max);
+         */
+
+
+        /*
+        //打印出大于平均值的数的百分比
+        int N = 50;
+        int[] all = new int[N];
+        int sum = 0;
+        int count = 0;
+        while (!StdIn.isEmpty()) {
+            if (count == N) {
+                break;//最多输入50个数
+            }
+            int temp = StdIn.readInt();
+            all[count] = temp;
+            sum += temp;
+            ++count;
+        }
+        int largerCount = 0;
+        assert count != 0;
+        int avg = sum / count;
+        for (int i : all) {
+            if (i > avg) {
+                ++largerCount;
+            }
+        }
+        System.out.println("大于平均值的数的百分比\t" +
+                new BigDecimal(largerCount).divide(new BigDecimal(count), 3, BigDecimal.ROUND_HALF_UP));
+                */
+
+
+        /**
+        //冒泡排序（升序打印），对于输入规模N，时间复杂度为(N-1) + (N-2) + ... + 3 + 2 + 1 = N(N - 1)/2
+        //去掉系数和低幂次项，时间复杂度为N的二次幂
+        int N = 50;
+        int[] all = new int[N];
+        int i = 0;
+        while (!StdIn.isEmpty()) {
+            all[i] = StdIn.readInt();
+            ++i;
+        }
+
+        int complex = 0;
+        for (int j = i; j > 0; j--) {
+            for (int k = 0; k < j - 1; k++) {
+                complex++;
+                if (all[k] > all[k + 1]) {
+                    int temp = all[k + 1];
+                    all[k + 1] = all[k];
+                    all[k] = temp;
+                }
+            }
+        }
+
+        for (int anAll : all) {
+            System.out.print(anAll + "\t");
+        }
+        System.out.println();
+        System.out.println("复杂度" + complex);
+         */
+
+
+        /**
+         //随机顺序打印
+         int N = 50;
+         int[] all = new int[N];
+         int i = 0;
+         while (!StdIn.isEmpty()) {
+         all[i] = StdIn.readInt();
+         ++i;
+         }
+         int[] copy = new int[i];
+         for (int j = 0; j < i; j++) {
+         copy[j] = all[j];
+         }
+
+         StdRandom.shuffle(copy);
+         for (int anAll : copy) {
+         System.out.print(anAll + "\t");
+         }
+         */
+    }
+
     public static void main(String[] args) {
         /*
         exercise1_1_1();
@@ -586,77 +739,12 @@ public class Excise1_1 {
         exercise_1_1_30();
 
         exercise_1_1_32();
-        */
 
         exercise_1_1_34();
+        */
+
+
     }
 
-    private static void exercise_1_1_34() {
-
-//        /**
-//         * 打印出最大和最小的数，不需要保存输入的所有值
-//         */
-//        int max = 0, min = 0;
-//        boolean isFirst = true;
-//        while (!StdIn.isEmpty()) {
-//            int i = StdIn.readInt();
-//
-//            if (isFirst) {
-//                max = i;
-//                min = i;
-//                isFirst = false;
-//                continue;
-//            }
-//
-//            if (i > max) {
-//                max = i;
-//            }
-//            if (i < min) {
-//                min = i;
-//            }
-//        }
-//        System.out.printf("最大的数是%d，最小的数是%d\n", max, min);
-
-
-        /**
-         * 打印出所有数的中位数，不需要保存输入的所有值
-         *//*
-        int sum = 0;
-        int count = 0;
-        while (!StdIn.isEmpty()) {
-            ++count;
-            sum += StdIn.readInt();
-        }
-        StdOut.printf("所有数的中位数是%d\n", sum / count);*/
-
-
-        //the k-th largest number，打印出第k小的数，设k等于26
-        int k = 5;
-        int[] foo = new int[k];
-        int index = 0;
-        while (!StdIn.isEmpty()) {
-            int inNUm = StdIn.readInt();
-
-            if (index < k) {
-                foo[index] = inNUm;
-                ++index;
-                continue;
-            }
-            //保证foo数组中保存的始终是前k大的数（每当读取的数比遍历数组到的数小，就替换）
-            for (int i = 0; i < k; i++) {
-                if (inNUm < foo[i]) {
-                    foo[i] = inNUm;
-                    break;
-                }
-            }
-        }
-        int max = foo[0];
-        for (int aFoo : foo) {
-            if (aFoo > max) {
-                max = aFoo;
-            }
-        }
-        System.out.println("第" + k + "大的数是\t" + max);
-    }
 
 }
