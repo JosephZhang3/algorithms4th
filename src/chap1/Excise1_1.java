@@ -3,16 +3,11 @@ package chap1;
 import util.StdDraw;
 import util.StdIn;
 import util.StdOut;
-import util.StdRandom;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import static java.math.RoundingMode.HALF_UP;
 
-/**
- * todo 练习1.1.25 数学归纳法证明
- */
 public class Excise1_1 {
 
     private static void exercise1_1_1() {
@@ -643,33 +638,33 @@ public class Excise1_1 {
 
 
         /**
-        //冒泡排序（升序打印），对于输入规模N，时间复杂度为(N-1) + (N-2) + ... + 3 + 2 + 1 = N(N - 1)/2
-        //去掉系数和低幂次项，时间复杂度为N的二次幂
-        int N = 50;
-        int[] all = new int[N];
-        int i = 0;
-        while (!StdIn.isEmpty()) {
-            all[i] = StdIn.readInt();
-            ++i;
-        }
+         //冒泡排序（升序打印），对于输入规模N，时间复杂度为(N-1) + (N-2) + ... + 3 + 2 + 1 = N(N - 1)/2
+         //去掉系数和低幂次项，时间复杂度为N的二次幂
+         int N = 50;
+         int[] all = new int[N];
+         int i = 0;
+         while (!StdIn.isEmpty()) {
+         all[i] = StdIn.readInt();
+         ++i;
+         }
 
-        int complex = 0;
-        for (int j = i; j > 0; j--) {
-            for (int k = 0; k < j - 1; k++) {
-                complex++;
-                if (all[k] > all[k + 1]) {
-                    int temp = all[k + 1];
-                    all[k + 1] = all[k];
-                    all[k] = temp;
-                }
-            }
-        }
+         int complex = 0;
+         for (int j = i; j > 0; j--) {
+         for (int k = 0; k < j - 1; k++) {
+         complex++;
+         if (all[k] > all[k + 1]) {
+         int temp = all[k + 1];
+         all[k + 1] = all[k];
+         all[k] = temp;
+         }
+         }
+         }
 
-        for (int anAll : all) {
-            System.out.print(anAll + "\t");
-        }
-        System.out.println();
-        System.out.println("复杂度" + complex);
+         for (int anAll : all) {
+         System.out.print(anAll + "\t");
+         }
+         System.out.println();
+         System.out.println("复杂度" + complex);
          */
 
 
