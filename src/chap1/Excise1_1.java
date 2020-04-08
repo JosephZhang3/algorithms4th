@@ -3,9 +3,13 @@ package chap1;
 import util.StdDraw;
 import util.StdIn;
 import util.StdOut;
+import util.StdRandom;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
+import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_UP;
 
 public class Excise1_1 {
@@ -179,7 +183,6 @@ public class Excise1_1 {
             a[i] = a[a[i]];
         }
         for (int i = 0; i < 10; i++) {
-            System.out.println(a[i]);
         }
     }
 
@@ -433,7 +436,7 @@ public class Excise1_1 {
         return euclid(q, val);
     }
 
-    //todo 练习1.1.25 使用数学归纳法证明Euclid算法，以及，求Euclid算法最坏情况的时间复杂度 https://www.zhihu.com/question/35133122
+    //todo 练习1.1.25 使用数学归纳法证明Euclid算法，以及，求Euclid算法最时概率是否吻合？的时间复杂度 https://www.zhihu.com/question/35133122
 
 
     private static void exercise_1_1_27() {
@@ -528,9 +531,7 @@ public class Excise1_1 {
 
         int x = 0;
         for (int i = 0; i < n; i++) {
-            //todo 无法使用画图工具
-            StdDraw.filledRectangle(x, 0, per / 5, hitNums[i]);
-            x += per / 2;
+            //todo 无法使用画图工具            x += per / 2;
         }
     }
 
@@ -579,33 +580,6 @@ public class Excise1_1 {
 
 
         /**
-         //the k-th largest number，打印出第k小的数，设k等于26
-         int k = 5;
-         int[] foo = new int[k];
-         int index = 0;
-         while (!StdIn.isEmpty()) {
-         int inNUm = StdIn.readInt();
-
-         if (index < k) {
-         foo[index] = inNUm;
-         ++index;
-         continue;
-         }
-         //保证foo数组中保存的始终是前k大的数（每当读取的数比遍历数组到的数小，就替换）
-         for (int i = 0; i < k; i++) {
-         if (inNUm < foo[i]) {
-         foo[i] = inNUm;
-         break;
-         }
-         }
-         }
-         int max = foo[0];
-         for (int aFoo : foo) {
-         if (aFoo > max) {
-         max = aFoo;
-         }
-         }
-         System.out.println("第" + k + "大的数是\t" + max);
          */
 
 
@@ -737,9 +711,105 @@ public class Excise1_1 {
 
         exercise_1_1_34();
         */
-
+        exercise_1_1_35();
 
     }
 
+    /**
+     * 每种两个骰子之和的准确概率分布
+     */
+    private static void exercise_1_1_35() {
+
+        double[] e = exactProbability();
+        double[] n100 = nTimesDice(100);
+        double[] n1000 = nTimesDice(1000);
+        double[] n10000 = nTimesDice(10000);
+        double[] n100000 = nTimesDice(100000);
+        double[] n1000000 = nTimesDice(1000000);
+        double[] n10000000 = nTimesDice(10000000);
+        double[] n100000000 = nTimesDice(100000000);
+
+        try {
+            System.out.println("N为100时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100));
+            System.out.println("N为1000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n1000));
+            System.out.println("N为10000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n10000));
+            System.out.println("N为100000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100000));
+            System.out.println("N为1000000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n1000000));
+            System.out.println("N为10000000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n10000000));
+            System.out.println("N为100000000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100000000));
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 比较两个 和概率数组内容 的相似度 吻合程度达到小数点后3位
+     *
+     * @param e
+     * @param n
+     * @return
+     * @throws Exception
+     */
+    private static boolean compareDegreeOfSimilarity(double[] e, double[] n) throws Exception {
+        if (e.length != n.length) {
+            throw new Exception("长度不等");
+        }
+        boolean similar = true;
+        for (int i = 2; i < e.length; i++) {
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(3);
+            df.setGroupingSize(0);
+            df.setRoundingMode(FLOOR);
+            if (!df.format(e[i]).equals(df.format(n[i]))) {
+                similar = false;
+            }
+        }
+        return similar;
+    }
+
+    /**
+     * 计算准确概率
+     *
+     * @return
+     */
+    private static double[] exactProbability() {
+        double[] p = new double[2 * 6 + 1];
+        for (int i = 1; i <= 6; i++) {
+            for (int j = 1; j <= 6; j++) {
+                p[i + j] += 1.0;
+            }
+        }
+
+        for (int i = 2; i <= 2 * 6; i++) {
+            p[i] /= 6 * 6;
+        }
+
+        for (int i = 2; i < 2 * 6 + 1; i++) {
+            System.out.printf("投资和%d出现的概率为" + p[i] + "\n", i);
+        }
+        return p;
+    }
+
+    /**
+     * 模拟N次掷骰（tou 第三声）子实验，一个骰子的点数为1到6，得到经验概率
+     *
+     * @param N
+     */
+    private static double[] nTimesDice(int N) {
+        double[] p = new double[2 * 6 + 1];
+        for (int i = 0; i < N; i++) {
+            p[StdRandom.uniform(1, 7) + StdRandom.uniform(1, 7)] += 1.0;
+        }
+
+        for (int i = 2; i < 2 * 6 + 1; i++) {
+            p[i] /= N;
+        }
+
+        for (int i = 2; i < 2 * 6 + 1; i++) {
+            System.out.printf("投资和%d出现的概率为" + p[i] + "\n", i);
+        }
+        return p;
+    }
 
 }
