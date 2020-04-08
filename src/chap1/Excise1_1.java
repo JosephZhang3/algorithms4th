@@ -580,6 +580,33 @@ public class Excise1_1 {
 
 
         /**
+         //the k-th largest number，打印出第k小的数，设k等于26
+         int k = 5;
+         int[] foo = new int[k];
+         int index = 0;
+         while (!StdIn.isEmpty()) {
+         int inNUm = StdIn.readInt();
+
+         if (index < k) {
+         foo[index] = inNUm;
+         ++index;
+         continue;
+         }
+         //保证foo数组中保存的始终是前k大的数（每当读取的数比遍历数组到的数小，就替换）
+         for (int i = 0; i < k; i++) {
+         if (inNUm < foo[i]) {
+         foo[i] = inNUm;
+         break;
+         }
+         }
+         }
+         int max = foo[0];
+         for (int aFoo : foo) {
+         if (aFoo > max) {
+         max = aFoo;
+         }
+         }
+         System.out.println("第" + k + "大的数是\t" + max);
          */
 
 
