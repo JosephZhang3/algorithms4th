@@ -691,7 +691,15 @@ public class Excise1_1 {
     }
 
     public static void main(String[] args) {
+
+        exercise_1_1_36();//TODO
+        exercise_1_1_37();//TODO
+        exercise_1_1_39();//TODO
+
         /*
+
+        exercise_1_1_35();
+
         exercise1_1_1();
 
         exercise1_1_2();
@@ -738,7 +746,6 @@ public class Excise1_1 {
 
         exercise_1_1_34();
         */
-        exercise_1_1_35();
 
     }
 
