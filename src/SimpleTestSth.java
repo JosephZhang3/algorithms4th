@@ -1,6 +1,4 @@
-package chap1.basic_program_model;
-
-public class TER {
+public class SimpleTestSth {
 
     public static void main(String[] args) {
         System.out.printf("%10d",1000000);
