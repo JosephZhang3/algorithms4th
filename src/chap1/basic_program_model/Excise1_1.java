@@ -690,8 +690,7 @@ public class Excise1_1 {
 
     public static void main(String[] args) {
 
-//        exercise_1_1_37();//TODO
-//        exercise_1_1_39();//TODO
+//        exercise_1_1_39();//see in RandomMatch.java
 
         /*
 

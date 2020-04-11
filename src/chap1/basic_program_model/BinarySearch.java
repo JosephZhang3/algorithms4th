@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class BinarySearch {
 
     //用循环方式实现
-    private static int rankLoop(int key, int[] a) {
+    static int rankLoop(int key, int[] a) {
         int lo = 0;
         int hi = a.length - 1;
 
