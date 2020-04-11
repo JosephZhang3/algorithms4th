@@ -41,7 +41,7 @@ public class ArrayTest {
      * @param doubles
      */
     private static double[] duplicateArray(double[] doubles) {
-        double[] copy = new double[doubles.length];
+        double[] copy = new double[doubles.length];//开一个新的数组空间
 
         for (int i = 0; i < doubles.length; i++) {
             copy[i] = doubles[i];

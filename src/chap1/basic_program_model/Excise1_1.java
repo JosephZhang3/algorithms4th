@@ -1,12 +1,10 @@
-package chap1;
+package chap1.basic_program_model;
 
-import util.StdDraw;
 import util.StdIn;
 import util.StdOut;
 import util.StdRandom;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 import static java.math.RoundingMode.FLOOR;
@@ -692,9 +690,8 @@ public class Excise1_1 {
 
     public static void main(String[] args) {
 
-        exercise_1_1_36();//TODO
-        exercise_1_1_37();//TODO
-        exercise_1_1_39();//TODO
+//        exercise_1_1_37();//TODO
+//        exercise_1_1_39();//TODO
 
         /*
 
