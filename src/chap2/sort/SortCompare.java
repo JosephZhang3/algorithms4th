@@ -1,4 +1,4 @@
-package sort;
+package chap2.sort;
 
 import java.util.Random;
 

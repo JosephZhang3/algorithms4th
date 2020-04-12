@@ -1,6 +1,6 @@
 package util;
 
-import sort.InsertionSort;
+import chap2.sort.InsertionSort;
 
 /**
  * 主测试类，测试各种排序的性能

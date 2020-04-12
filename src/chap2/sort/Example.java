@@ -1,4 +1,4 @@
-package sort;
+package chap2.sort;
 
 /**
  * 一个例子结构组织良好的排序类的示例，包含
