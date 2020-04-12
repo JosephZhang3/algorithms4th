@@ -67,14 +67,12 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
      * @throws Exception
      */
     private Node put(Node x, Key key, Value value) throws Exception {
-//        if (x == null) {
-//
-//        }
+        //if two key equals then replace original value
         if (x.key.compareTo(key) == 0) {
             x.value = value;
-//            return x;
         }
 
+        // TODO: 4/13/2020 calculate N
         if (x.key.compareTo(key) > 0) {
             if (x.left == null) {
                 x.left = new Node(key, value, 1);
@@ -90,7 +88,6 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
             put(x.right, key, value);
         }
         return x;
-        //if two key equals then replace original value
     }
 
     public static void main(String[] args) throws Exception {
@@ -103,6 +100,11 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         bst.put(32, "32");
         bst.put(1, "1");
         bst.put(6, "6");
+        bst.put(10, "10");
+        bst.put(4, "4");
+        bst.put(22, "22");
+        bst.put(2, "2");
+        bst.put(34, "34");
     }
 
 }
