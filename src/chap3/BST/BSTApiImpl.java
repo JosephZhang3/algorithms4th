@@ -34,6 +34,12 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         return x.N;
     }
 
+    /**
+     * 查找命中平均所需的比较次数为 1.39lgN ，查找未命中仅需要多一次额外的比较
+     *
+     * @param key 键
+     * @return 匹配结点的值
+     */
     @Override
     public Value get(Key key) {
         return get(root, key);
@@ -49,10 +55,16 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         } else if (cmp < 0) {
             return get(x.left, key);
         } else {
-            return x.value;
+            return x.value;//如果查找命中，直接return值。如果未命中，最后还得再进一步递归一次此get方法至遇到树末端null结点
         }
     }
 
+    /**
+     * 替换现有结点的值平均所需的比较次数为 1.39lgN ，添加新结点仅需要多一次额外的比较
+     *
+     * @param key   待插入的键
+     * @param value 待插入的值
+     */
     @Override
     public void put(Key key, Value value) {
         root = put(root, key, value);
@@ -77,7 +89,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         } else if (cmp > 0) {
             x.right = put(x.right, key, value);
         } else {
-            x.value = value;
+            x.value = value;//如果待插入键已存在，直接替换此结点值。如果不存在，则变成添加结点的情况，需要多一次递归至遇到树末端null结点
         }
 
         //update node count
