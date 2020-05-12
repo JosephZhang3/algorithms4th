@@ -1,5 +1,11 @@
 package chap3.BST;
 
+/**
+ * 二叉查找树的递归实现
+ *
+ * @param <Key>
+ * @param <Value>
+ */
 public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
 
     private class Node {
@@ -55,8 +61,8 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     /**
      * value allowed to be null,but key can not
      *
-     * @param x 每次遍历到的结点
-     * @param key 结点键
+     * @param x     每次遍历到的结点
+     * @param key   结点键
      * @param value 结点值
      * @return 匹配的结点
      */
