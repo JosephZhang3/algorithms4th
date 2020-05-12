@@ -13,4 +13,7 @@ public interface BSTApi<Key extends Comparable<Key>, Value> {
 
     void put(Key key, Value value) throws Exception;
 
+    Key min();
+
+    void delete(Key key);
 }

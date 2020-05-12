@@ -8,6 +8,25 @@ package chap3.BST;
  */
 public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
 
+    public static void main(String[] args) {
+        BSTApiImpl<Integer, String> bst = new BSTApiImpl<>();
+        bst.put(32, "32");
+        bst.put(1, "1");
+        bst.put(6, "6");
+        bst.put(10, "10");
+        bst.put(4, "4");
+        bst.put(22, "22");
+        bst.put(2, "2");
+        bst.put(34, "34");
+
+        System.out.println(bst.get(10));
+        System.out.println(bst.get(2));
+
+        System.out.println(bst.min());
+
+        System.exit(0);
+    }
+
     private class Node {
         private Key key;
         private Value value;
@@ -98,22 +117,33 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         return x;
     }
 
-    public static void main(String[] args) {
+    /**
+     * 查找树中最小键
+     *
+     * @return it
+     */
+    @Override
+    public Key min() {
+        return min(root);
+    }
 
-        BSTApiImpl<Integer, String> bst = new BSTApiImpl<>();
-        bst.put(32, "32");
-        bst.put(1, "1");
-        bst.put(6, "6");
-        bst.put(10, "10");
-        bst.put(4, "4");
-        bst.put(22, "22");
-        bst.put(2, "2");
-        bst.put(34, "34");
+    private Key min(Node x) {
+        if (x.left == null) {
+            return x.key;
+        } else {
+            return min(x.left);
+        }
+    }
 
-        System.out.println(bst.get(10));
-        System.out.println(bst.get(2));
 
-        System.exit(0);
+    /**
+     * 二叉查找树最难的方法，删除
+     *
+     * @param key 键
+     */
+    @Override
+    public void delete(Key key) {
+
     }
 
 }
