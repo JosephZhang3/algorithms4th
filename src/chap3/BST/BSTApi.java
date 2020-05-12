@@ -15,5 +15,7 @@ public interface BSTApi<Key extends Comparable<Key>, Value> {
 
     Key min();
 
+    Key max();
+
     void delete(Key key);
 }

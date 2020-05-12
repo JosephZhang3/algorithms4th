@@ -23,6 +23,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         System.out.println(bst.get(2));
 
         System.out.println(bst.min());
+        System.out.println(bst.max());
 
         System.exit(0);
     }
@@ -124,20 +125,46 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
      */
     @Override
     public Key min() {
-        return min(root);
+        return min(root).key;
     }
 
-    private Key min(Node x) {
+    private Node min(Node x) {
         if (x.left == null) {
-            return x.key;
+            return x;
         } else {
             return min(x.left);
         }
     }
 
+    /**
+     * 查找树中最大键
+     *
+     * @return it
+     */
+    @Override
+    public Key max() {
+        return max(root).key;
+    }
+
+    private Node max(Node x) {
+        if (x.right == null) {
+            return x;
+        } else {
+            return max(x.right);
+        }
+    }
 
     /**
-     * 二叉查找树最难的方法，删除
+     * 向下取整，floor 地板
+     * @return 小于等于key的最大键
+     */
+    public Key floor(Key key){
+
+        return null;
+    }
+
+    /**
+     * 二叉查找树最难的方法，删除 todo
      *
      * @param key 键
      */
