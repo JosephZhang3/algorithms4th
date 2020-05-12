@@ -1,8 +1,5 @@
 package chap3.BST;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
 
     private class Node {
@@ -20,9 +17,9 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
 
     private Node root;
 
-    public int size() {
-        return size(root);
-    }
+//    public int size() {
+//        return size(root);
+//    }
 
     private int size(Node x) {
         if (x == null) {//empty tree
@@ -40,63 +37,52 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         if (x == null) {
             return null;
         }
-        if (x.key.compareTo(key) < 0) {
-            get(x.right, key);
-        } else if (x.key.compareTo(key) > 0) {
-            get(x.left, key);
+        int cmp = key.compareTo(x.key);
+        if (cmp > 0) {
+            return get(x.right, key);
+        } else if (cmp < 0) {
+            return get(x.left, key);
+        } else {
+            return x.value;
         }
-        return x.value;
     }
 
     @Override
-    public void put(Key key, Value value) throws Exception {
-        if (root == null) {
-            root = new Node(key, value, 1);
-        } else {
-            put(root, key, value);
-        }
+    public void put(Key key, Value value) {
+        root = put(root, key, value);
     }
 
     /**
      * value allowed to be null,but key can not
      *
-     * @param x
-     * @param key
-     * @param value
-     * @return
-     * @throws Exception
+     * @param x 每次遍历到的结点
+     * @param key 结点键
+     * @param value 结点值
+     * @return 匹配的结点
      */
-    private Node put(Node x, Key key, Value value) throws Exception {
-        //if two key equals then replace original value
-        if (x.key.compareTo(key) == 0) {
+    private Node put(Node x, Key key, Value value) {
+        if (x == null) {
+            return new Node(key, value, 1);
+        }
+
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) {
+            x.left = put(x.left, key, value);
+        } else if (cmp > 0) {
+            x.right = put(x.right, key, value);
+        } else {
             x.value = value;
         }
 
-        // TODO: 4/13/2020 calculate N
-        if (x.key.compareTo(key) > 0) {
-            if (x.left == null) {
-                x.left = new Node(key, value, 1);
-                return x.left;
-            }
-            put(x.left, key, value);
-        }
-        if (x.key.compareTo(key) < 0) {
-            if (x.right == null) {
-                x.right = new Node(key, value, 1);
-                return x.right;
-            }
-            put(x.right, key, value);
-        }
+        //update node count
+        x.N = size(x.left) + size(x.right) + 1;
+
         return x;
     }
 
-    public static void main(String[] args) throws Exception {
-        Map<String, String> m = new TreeMap<>();
-        m.put("dsf", null);
-//        m.put(null, "324");
-//        System.out.println(m.get(null));
+    public static void main(String[] args) {
 
-        BSTApiImpl<Integer, String> bst = new BSTApiImpl();
+        BSTApiImpl<Integer, String> bst = new BSTApiImpl<>();
         bst.put(32, "32");
         bst.put(1, "1");
         bst.put(6, "6");
@@ -105,6 +91,11 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         bst.put(22, "22");
         bst.put(2, "2");
         bst.put(34, "34");
+
+        System.out.println(bst.get(10));
+        System.out.println(bst.get(2));
+
+        System.exit(0);
     }
 
 }
