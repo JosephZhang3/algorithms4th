@@ -22,8 +22,18 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         System.out.println(bst.get(10));
         System.out.println(bst.get(2));
 
+        System.out.print("min is ");
         System.out.println(bst.min());
+        System.out.print("max is ");
         System.out.println(bst.max());
+
+        System.out.print("向下取整：");
+        System.out.println(bst.floor(9));
+        System.out.print("向上取整：");
+        System.out.println(bst.ceiling(9));
+
+        System.out.print("排名第4的key为 ");
+        System.out.println(bst.select(4));
 
         System.exit(0);
     }
@@ -156,11 +166,102 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
 
     /**
      * 向下取整，floor 地板
+     *
      * @return 小于等于key的最大键
      */
-    public Key floor(Key key){
+    @Override
+    public Key floor(Key key) {
+        Node x = floor(root, key);
+        if (x == null) {
+            return null;
+        } else {
+            return x.key;
+        }
+    }
 
-        return null;
+    private Node floor(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) {
+            return x;
+        } else if (cmp < 0) {
+            return floor(x.left, key);//小于等于key的最大键一定在左子树
+        } else {
+            Node t = floor(x.right, key);//查找右子树中小于等于key的最大键
+            if (t != null) {
+                return t;//got it
+            } else {
+                return x;//未找到，返回临时的根结点
+            }
+        }
+    }
+
+    /**
+     * 向上取整，ceiling 天花板
+     *
+     * @return 大于等于key的最小键
+     */
+    @Override
+    public Key ceiling(Key key) {
+        Node x = ceiling(root, key);
+        if (x == null) {
+            return null;
+        } else {
+            return x.key;
+        }
+    }
+
+    private Node ceiling(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) {
+            return x;
+        } else if (cmp > 0) {
+            return ceiling(x.right, key);//大于等于key的最小键一定在右子树
+        } else {
+            Node t = ceiling(x.left, key);//查找左子树中大于等于key的最小键
+            if (t != null) {
+                return t;//got it
+            } else {
+                return x;//未找到，返回临时的根结点
+            }
+        }
+    }
+
+    /**
+     * 查找排名为k的键
+     *
+     * @param k 排名
+     */
+    @Override
+    public Key select(int k) {
+        return select(root, k);
+    }
+
+    private Key select(Node x, int k) {
+        if (x == null) {
+            return null;
+        }
+        if (x.N == k) {
+            return x.key;
+        } else if (x.N < k) {
+            return select(x.right, k);
+        } else {
+            return select(x.left, k);
+        }
+    }
+
+    /**
+     * 查找键key的排名
+     *
+     * @param key 给定键
+     */
+    public void rank(Key key) {
+
     }
 
     /**
