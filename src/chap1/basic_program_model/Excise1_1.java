@@ -738,9 +738,37 @@ public class Excise1_1 {
         exercise_1_1_32();
 
         exercise_1_1_34();
-        */
 
         exercise_1_1_35();
+*/
+        exercise_1_1_36();
+    }
+
+    private static void exercise_1_1_36() {
+        // 控制台输入两个数，空格分隔，然后按回车
+        int m = StdIn.readInt();
+        int n = StdIn.readInt();
+
+        int[][] res = new int[m][m];
+        int[] a = new int[m];
+
+        for (int i = 0; i < n; i++) {
+            for (int q = 0; q < m; q++) {
+                a[q] = q;
+            }
+            StdRandom.shuffle(a);
+
+            for (int j = 0; j < m; j++) {
+                res[a[j]][j]++;
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(res[i][j] + "\t");
+            }
+            System.out.println();
+        }
     }
 
     /**
