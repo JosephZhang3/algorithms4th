@@ -693,9 +693,6 @@ public class Excise1_1 {
 //        exercise_1_1_39();//see in RandomMatch.java
 
         /*
-
-        exercise_1_1_35();
-
         exercise1_1_1();
 
         exercise1_1_2();
@@ -743,6 +740,7 @@ public class Excise1_1 {
         exercise_1_1_34();
         */
 
+        exercise_1_1_35();
     }
 
     /**
@@ -760,13 +758,13 @@ public class Excise1_1 {
         double[] n100000000 = nTimesDice(100000000);
 
         try {
-            System.out.println("N为100时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100));
-            System.out.println("N为1000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n1000));
-            System.out.println("N为10000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n10000));
-            System.out.println("N为100000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100000));
-            System.out.println("N为1000000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n1000000));
-            System.out.println("N为10000000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n10000000));
-            System.out.println("N为100000000时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100000000));
+            System.out.println("N为一百时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100));
+            System.out.println("N为一千时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n1000));
+            System.out.println("N为一万时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n10000));
+            System.out.println("N为十万时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100000));
+            System.out.println("N为一百万时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n1000000));
+            System.out.println("N为一千万时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n10000000));
+            System.out.println("N为一亿时概率是否吻合？：   " + compareDegreeOfSimilarity(e, n100000000));
         } catch (Exception e1) {
             e1.printStackTrace();
         }
@@ -788,9 +786,9 @@ public class Excise1_1 {
         boolean similar = true;
         for (int i = 2; i < e.length; i++) {
             DecimalFormat df = new DecimalFormat();
+            // 最大小数数字
             df.setMaximumFractionDigits(3);
             df.setGroupingSize(0);
-            df.setRoundingMode(FLOOR);
             if (!df.format(e[i]).equals(df.format(n[i]))) {
                 similar = false;
             }
@@ -804,10 +802,12 @@ public class Excise1_1 {
      * @return
      */
     private static double[] exactProbability() {
+        // 两个六面骰子
         double[] p = new double[2 * 6 + 1];
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
-                p[i + j] += 1.0;
+                // 36种组合，11种和
+                p[i + j]++;
             }
         }
 
@@ -815,8 +815,8 @@ public class Excise1_1 {
             p[i] /= 6 * 6;
         }
 
-        for (int i = 2; i < 2 * 6 + 1; i++) {
-            System.out.printf("投资和%d出现的概率为" + p[i] + "\n", i);
+        for (int i = 2; i <= 2 * 6; i++) {
+            System.out.printf("骰子和%d出现的概率为" + p[i] + "\n", i);
         }
         return p;
     }
@@ -837,7 +837,7 @@ public class Excise1_1 {
         }
 
         for (int i = 2; i < 2 * 6 + 1; i++) {
-            System.out.printf("投资和%d出现的概率为" + p[i] + "\n", i);
+            System.out.printf("骰子和%d出现的概率为" + p[i] + "\n", i);
         }
         return p;
     }
