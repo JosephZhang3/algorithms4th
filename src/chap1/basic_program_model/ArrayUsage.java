@@ -1,9 +1,9 @@
-package chap1.array;
+package chap1.basic_program_model;
 
 /**
  * 正确使用数组
  */
-public class ArrayTest {
+public class ArrayUsage {
     public static void main(String[] args) {
 
         double[] doubles = {0.7, 14.5, 5.6, 3.2};

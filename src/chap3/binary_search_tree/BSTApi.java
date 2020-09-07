@@ -1,4 +1,4 @@
-package chap3.BST;
+package chap3.binary_search_tree;
 
 /**
  * 二叉查找树API，等待具体实现
