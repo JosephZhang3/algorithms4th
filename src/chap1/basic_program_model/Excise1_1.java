@@ -7,7 +7,6 @@ import util.StdRandom;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_UP;
 
 public class Excise1_1 {
@@ -740,8 +739,45 @@ public class Excise1_1 {
         exercise_1_1_34();
 
         exercise_1_1_35();
-*/
+
         exercise_1_1_36();
+*/
+
+        exercise_1_1_39();
+    }
+
+    private static void exercise_1_1_39() {
+        int t = StdIn.readInt();
+
+        for (int j = 3; j < 7; j++) {
+            int times = 0;
+            for (int i = 0; i < t; i++) {
+                times += help39((int) Math.pow(10, j));
+            }
+            System.out.println("规模 10^" + j + " 重复数字 " + times / t);
+        }
+    }
+
+    private static int help39(int N) {
+        int[] arr1 = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr1[i] = (int) (Math.random() * 9 + 1) * 100000;
+        }
+
+        int[] arr2 = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr2[i] = (int) (Math.random() * 9 + 1) * 100000;
+        }
+
+        int sameCount = 0;
+        for (int anArr1 : arr1) {
+            int f = BinarySearch.rankLoop(anArr1, arr2);
+            if (f != -1) {
+                sameCount++;
+            }
+        }
+
+        return sameCount;
     }
 
     private static void exercise_1_1_36() {

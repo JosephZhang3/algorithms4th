@@ -18,7 +18,7 @@ public class BinarySearch {
 
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;//中点
-            StdOut.println("首元素索引" + lo + "尾元素索引" + hi + "中点元素索引" + mid);
+//            StdOut.println("首元素索引" + lo + "尾元素索引" + hi + "中点元素索引" + mid);
 
             if (key < a[mid]) {
                 hi = mid - 1;
