@@ -76,6 +76,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     private Value get(Node x, Key key) {
+        //取到空子节点时，结束递归
         if (x == null) {
             return null;
         }
