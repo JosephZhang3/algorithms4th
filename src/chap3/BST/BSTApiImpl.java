@@ -53,14 +53,11 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
 
     private Node root;
 
-//    public int size() {
-//        return size(root);
-//    }
-
     private int size(Node x) {
-        if (x == null) {//empty tree
+        if (x == null) {
             return 0;
         }
+        // 节点计数器的值就是子树的节点个数
         return x.N;
     }
 
@@ -76,7 +73,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     private Value get(Node x, Key key) {
-        //取到空子节点时，结束递归
+        //取到空节点时，说明已经到达末端，结束递归
         if (x == null) {
             return null;
         }
@@ -86,7 +83,8 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         } else if (cmp < 0) {
             return get(x.left, key);
         } else {
-            return x.value;//如果查找命中，直接return值。如果未命中，最后还得再进一步递归一次此get方法至遇到树末端null结点
+            //如果查找命中，直接return值。如果未命中，最后还得再进一步递归get方法至遇到树末端null结点
+            return x.value;
         }
     }
 
@@ -102,7 +100,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     /**
-     * value allowed to be null,but key can not
+     * value 可以为 null，但是 key 不可以
      *
      * @param x     每次遍历到的结点
      * @param key   结点键

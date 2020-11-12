@@ -1,4 +1,4 @@
-public class AarbitraryTest {
+public class StrangeTest {
 
     public static void main(String[] args) {
         System.out.println(Integer.MAX_VALUE);
