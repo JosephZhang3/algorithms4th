@@ -33,3 +33,5 @@ target/
 .mvn
 mvnw
 mvnw.cmd
+
+.DS_Store
