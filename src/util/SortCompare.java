@@ -1,4 +1,7 @@
-package chap2.sort;
+package util;
+
+import chap2.sort.InsertionSort;
+import chap2.sort.SelectionSort;
 
 import java.util.Random;
 
@@ -9,8 +12,12 @@ public class SortCompare {
 
     private static double time(String alg, Comparable[] a) {
         long beginTime = System.nanoTime();
-        if (alg.equals("Insertion")) InsertionSort.sort(a);
-        if (alg.equals("Selection")) SelectionSort.sort(a);
+        if (alg.equals("Insertion")) {
+            InsertionSort.sort(a);
+        }
+        if (alg.equals("Selection")) {
+            SelectionSort.sort(a);
+        }
         long endTime = System.nanoTime();
         return endTime - beginTime;
     }

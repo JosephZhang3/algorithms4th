@@ -1,11 +1,12 @@
-package util;
+package test;
 
 import chap2.sort.InsertionSort;
+import util.Operate;
 
 /**
  * 主测试类，测试各种排序的性能
  */
-public class Test {
+public class SortTest {
 
     /**
      * 执行排序->断言检测->显示排序后结果
@@ -20,7 +21,6 @@ public class Test {
         InsertionSort.enhancedSort(a);
         assert isSorted(a);
         show(a);
-
     }
 
     /**

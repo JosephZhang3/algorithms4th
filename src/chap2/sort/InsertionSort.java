@@ -1,5 +1,6 @@
 package chap2.sort;
 
+import test.SortTest;
 import util.*;
 
 /**
@@ -31,7 +32,7 @@ public class InsertionSort {
             for (int j = i; j > 0 && Operate.less(a[j], a[j - 1]); j--) {
                 Operate.exch(a, j, j - 1);
 
-                Test.show(a);
+                SortTest.show(a);
             }
         }
     }

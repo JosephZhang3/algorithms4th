@@ -1,8 +1,5 @@
 package chap2.symbol_table;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 符号表
  */
@@ -39,13 +36,5 @@ public class ST<Key, Value> {
      */
     Iterable<Key> keys() {
         return null;
-    }
-
-
-    public static void main(String[] args) {
-        Map<String, String> m = new HashMap<>();
-        m.put(null, "null-val");
-        m.put(null, null);
-        m.put("", null);
     }
 }

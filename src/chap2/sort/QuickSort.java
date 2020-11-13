@@ -31,8 +31,9 @@ public class QuickSort {
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo)//递归的终结条件
+        if (hi <= lo) {
             return;
+        }
         int j = partition(a, lo, hi);
         sort(a, lo, j - 1);
         sort(a, j + 1, hi);
@@ -64,12 +65,5 @@ public class QuickSort {
 
         Operate.exch(a, lo, j);
         return j;
-    }
-
-    public static void main(String[] args) {
-        String[] a = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
-        sort(a);
-        assert Test.isSorted(a);
-        Test.show(a);
     }
 }
