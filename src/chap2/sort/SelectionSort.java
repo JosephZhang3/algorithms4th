@@ -34,16 +34,4 @@ public class SelectionSort {
             Operate.exch(a, i, min);
         }
     }
-
-    /**
-     * 主方法，排序->断言->显示排序后结果
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        String[] a = {"s", "o", "r", "t", "e", "x", "a", "m", "p", "l", "e"};
-        sort(a);
-        assert Test.isSorted(a);
-        Test.show(a);
-    }
 }

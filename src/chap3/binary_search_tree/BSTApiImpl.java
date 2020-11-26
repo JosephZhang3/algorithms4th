@@ -8,36 +8,6 @@ package chap3.binary_search_tree;
  */
 public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
 
-    public static void main(String[] args) {
-        BSTApiImpl<Integer, String> bst = new BSTApiImpl<>();
-        bst.put(32, "32");
-        bst.put(1, "1");
-        bst.put(6, "6");
-        bst.put(10, "10");
-        bst.put(4, "4");
-        bst.put(22, "22");
-        bst.put(2, "2");
-        bst.put(34, "34");
-
-        System.out.println(bst.get(10));
-        System.out.println(bst.get(2));
-
-        System.out.print("min is ");
-        System.out.println(bst.min());
-        System.out.print("max is ");
-        System.out.println(bst.max());
-
-        System.out.print("向下取整：");
-        System.out.println(bst.floor(9));
-        System.out.print("向上取整：");
-        System.out.println(bst.ceiling(9));
-
-        System.out.print("排名第4的key为 ");
-        System.out.println(bst.select(4));
-
-        System.exit(0);
-    }
-
     private class Node {
         private Key key;
         private Value value;
@@ -53,14 +23,11 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
 
     private Node root;
 
-//    public int size() {
-//        return size(root);
-//    }
-
     private int size(Node x) {
-        if (x == null) {//empty tree
+        if (x == null) {
             return 0;
         }
+        // 节点计数器的值就是子树的节点个数
         return x.N;
     }
 
@@ -76,6 +43,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     private Value get(Node x, Key key) {
+        //取到空节点时，说明已经到达末端，结束递归
         if (x == null) {
             return null;
         }
@@ -85,7 +53,8 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         } else if (cmp < 0) {
             return get(x.left, key);
         } else {
-            return x.value;//如果查找命中，直接return值。如果未命中，最后还得再进一步递归一次此get方法至遇到树末端null结点
+            //如果查找命中，直接return值。如果未命中，最后还得再进一步递归get方法至遇到树末端null结点
+            return x.value;
         }
     }
 
@@ -101,7 +70,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     /**
-     * value allowed to be null,but key can not
+     * value 可以为 null，但是 key 不可以
      *
      * @param x     每次遍历到的结点
      * @param key   结点键
@@ -265,7 +234,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     /**
-     * 二叉查找树最难的方法，删除 todo
+     * 二叉查找树最难写的方法，删除 todo
      *
      * @param key 键
      */

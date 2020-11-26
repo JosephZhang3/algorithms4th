@@ -1,6 +1,8 @@
+package test;
+
 import java.util.*;
 
-public class SimpleTestSth {
+public class JdkMapImplTest {
 
 
     public static void main(String[] args) {
