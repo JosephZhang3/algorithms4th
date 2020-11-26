@@ -225,12 +225,58 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
     }
 
     /**
-     * 查找键key的排名
+     * 查找键key的排名 select方法的逆方法
      *
      * @param key 给定键
      */
-    public void rank(Key key) {
+    public int rank(Key key) {
+        return rank(root, key);
+    }
 
+    /**
+     * 本质上是递归求以x为根节点的子树中键小于 x.key 的节点数量
+     *
+     * @param x
+     * @param key
+     * @return
+     */
+    private int rank(Node x, Key key) {
+        if (x == null) {
+            return 0;// case:没有小于指定key的，说明已经搜索到了叶子
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) {
+            // 左子树中存在这样的节点，它的键比指定的key更小
+            return rank(x.left, key);
+        } else if (cmp > 0) {
+            // 1 表示执行中的node x 自身， size(x.left) 表示求node左子树节点的数量（它的左子树中的所有节点键都小于它的键），
+            // rank(x.right, key) 表示继续递归求解它的右子树中小于它的键的节点数量
+            return 1 + size(x.left) + rank(x.right, key);
+        } else {
+            // 完全相等，说明匹配到了key，它的左子树节点数+1就是它的排名
+            return size(x.left) + 1;
+        }
+    }
+
+    /**
+     * 删除树的最小键的节点
+     */
+    public void deleteMin() {
+        root = deleteMin(root);
+    }
+
+    private Node deleteMin(Node x) {
+        if (x.left == null) {
+            // 递归结束条件：当前节点没有左子节点，准确地说，完全没有子节点了
+            // 这时，返回它的右子树，换个角度，就是最左末的一个节点被抛弃了
+            return x.right;
+        }
+        // 一直沿左子树往深处递归
+        x.left = deleteMin(x.left);
+        // 递归往浅处跳出时，更新沿途每一个节点的计数器
+        x.N = size(x.left) + size(x.right) + 1;
+        // 返回抛弃了最左末的节点的树
+        return x;
     }
 
     /**
