@@ -9,15 +9,15 @@ package chap3.binary_search_tree;
 public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
 
     private class Node {
-        private Key key;
+        private final Key key;
         private Value value;
         private Node left, right;
-        private int N;//结点计数器，存储以该结点为根的子树中的结点总数
+        private int n;//结点计数器，存储以该结点为根的子树中的结点总数
 
         Node(Key key, Value value, int n) {
             this.key = key;
             this.value = value;
-            N = n;
+            this.n = n;
         }
     }
 
@@ -28,7 +28,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
             return 0;
         }
         // 节点计数器的值就是子树的节点个数
-        return x.N;
+        return x.n;
     }
 
     /**
@@ -88,11 +88,12 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         } else if (cmp > 0) {
             x.right = put(x.right, key, value);
         } else {
-            x.value = value;//如果待插入键已存在，直接替换此结点值。如果不存在，则变成添加结点的情况，需要多一次递归至遇到树末端null结点
+            //如果待插入键已存在，直接替换此结点值。如果不存在，则变成添加结点的情况，需要多一次递归至遇到树末端null结点
+            x.value = value;
         }
 
         //update node count
-        x.N = size(x.left) + size(x.right) + 1;
+        x.n = size(x.left) + size(x.right) + 1;
 
         return x;
     }
@@ -215,9 +216,9 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         if (x == null) {
             return null;
         }
-        if (x.N == k) {
+        if (x.n == k) {
             return x.key;
-        } else if (x.N < k) {
+        } else if (x.n < k) {
             return select(x.right, k);
         } else {
             return select(x.left, k);
@@ -235,10 +236,6 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
 
     /**
      * 本质上是递归求以x为根节点的子树中键小于 x.key 的节点数量
-     *
-     * @param x
-     * @param key
-     * @return
      */
     private int rank(Node x, Key key) {
         if (x == null) {
@@ -274,7 +271,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         // 一直沿左子树往深处递归
         x.left = deleteMin(x.left);
         // 递归往浅处跳出时，更新沿途每一个节点的计数器
-        x.N = size(x.left) + size(x.right) + 1;
+        x.n = size(x.left) + size(x.right) + 1;
         // 返回抛弃了最左末的节点的树
         return x;
     }

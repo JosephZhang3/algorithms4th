@@ -1,7 +1,7 @@
 package chap2.sort;
 
 /**
- * shell是人名？
+ * D.L.Shell排序（缩小增量排序）
  */
 public class ShellSort {
 }
