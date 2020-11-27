@@ -7,6 +7,8 @@ import java.util.Random;
 
 /**
  * 粗略比较排序算法的性能，只使用随机数，没有考虑特殊情况的输入
+ *
+ * @author jianghao.zhang
  */
 public class SortCompare {
 
@@ -32,7 +34,8 @@ public class SortCompare {
      */
     private static double timeRandomInput(String alg, int N, int T) {
         double total = 0.0;
-        Double[] a = new Double[N];//随机生成的数组
+        //随机生成的数组
+        Double[] a = new Double[N];
         for (int t = 0; t < T; t++) {
             for (int i = 0; i < N; i++) {
                 a[i] = new Random().nextDouble();

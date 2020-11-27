@@ -1,6 +1,6 @@
 package chap1.basic_program_model;
 
-import util.StdIn;
+import edu.princeton.cs.algs4.StdIn;
 
 /**
  * 计算标准输入给出的数的平均数

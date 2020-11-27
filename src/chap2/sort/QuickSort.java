@@ -1,5 +1,6 @@
 package chap2.sort;
 
+import edu.princeton.cs.algs4.StdRandom;
 import util.*;
 
 /**

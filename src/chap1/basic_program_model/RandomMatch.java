@@ -1,7 +1,7 @@
 package chap1.basic_program_model;
 
-import util.StdIn;
-import util.StdRandom;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class RandomMatch {
     public static void main(String[] args) {

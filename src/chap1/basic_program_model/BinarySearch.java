@@ -1,8 +1,8 @@
 package chap1.basic_program_model;
 
-import util.In;
-import util.StdIn;
-import util.StdOut;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Arrays;
 
@@ -56,17 +56,6 @@ public class BinarySearch {
 
     /**
      * 测试
-     * <p>
-     * 命令行编译运行指令
-     * zhangjianghao@DESKTOP-B98UJS4 MINGW64 /c/git-repos/algorithm4th/src (master)
-     * $ javac -encoding utf-8 ./chap1/basic_program_model/BinarySearch.java ./util/StdIn.java  ./util/In.java ./util/StdOut.java
-     * Note: .\chap1\basic_program_model\BinarySearch.java uses or overrides a deprecated API.
-     * Note: Recompile with -Xlint:deprecation for details.
-     * <p>
-     * zhangjianghao@DESKTOP-B98UJS4 MINGW64 /c/git-repos/algorithm4th/src (master)
-     * $ java chap1.basic_program_model.BinarySearch ./chap1/basic_program_model/tinyW.txt  -
-     * ȥ▒غ▒▒▒▒▒▒Ԫ▒▒Ϊ   34      435     54645   34534547        34534547        34534547        223423423       0       0
-     *
      * @param args args
      */
     public static void main(String[] args) {
@@ -89,8 +78,8 @@ public class BinarySearch {
 //        StdOut.println(rankLoop(8, a));
         //StdOut.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
 
-
-        int[] whiteList = In.readInts(args[0]);//从文件中读取整数
+        In in = new In();
+        int[] whiteList = in.readAllInts();//从文件中读取全部整数
         String param = args[1];//控制台打印选项开关
         Arrays.sort(whiteList);
 
