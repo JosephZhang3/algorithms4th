@@ -195,9 +195,10 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         } else {
             Node t = ceiling(x.left, key);//查找左子树中大于等于key的最小键
             if (t != null) {
-                return t;//got it
+                return t;
             } else {
-                return x;//未找到，返回临时的根结点
+                //未找到，返回临时的根结点
+                return x;
             }
         }
     }
@@ -280,6 +281,7 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
      * 二叉查找树最难写的方法，删除任意节点
      *
      * @param key 键
+     * @since 2020-11-27
      */
     @Override
     public void delete(Key key) {

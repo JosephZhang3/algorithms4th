@@ -1,4 +1,4 @@
-package util;
+package test;
 
 import chap2.sort.InsertionSort;
 import chap2.sort.SelectionSort;
