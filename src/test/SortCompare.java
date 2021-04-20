@@ -1,6 +1,7 @@
 package test;
 
 import chap2.sort.InsertionSort;
+import chap2.sort.QuickSort;
 import chap2.sort.SelectionSort;
 
 import java.util.Random;
@@ -20,6 +21,10 @@ public class SortCompare {
         if (alg.equals("Selection")) {
             SelectionSort.sort(a);
         }
+        if (alg.equals("quick")) {
+            // 输入规模 10000 时比插入排序快 4.4倍  当增大规模到 100000 时比插入排序快 56.4倍，数量级的增长，非常可观
+            QuickSort.sort(a);
+        }
         long endTime = System.nanoTime();
         return endTime - beginTime;
     }
@@ -35,10 +40,10 @@ public class SortCompare {
     private static double timeRandomInput(String alg, int N, int T) {
         double total = 0.0;
         //随机生成的数组
-        Double[] a = new Double[N];
+        Integer[] a = new Integer[N];
         for (int t = 0; t < T; t++) {
             for (int i = 0; i < N; i++) {
-                a[i] = new Random().nextDouble();
+                a[i] = new Random().nextInt();
             }
             total += time(alg, a);
         }

@@ -26,12 +26,18 @@ import util.*;
  */
 public class QuickSort {
 
-    private static void sort(Comparable[] a) {
-        StdRandom.shuffle(a);
-        sort(a, 0, a.length - 1);
+    public static void main(String[] args) {
+        sort(new Integer[]{342,5,7,88,34,16});
     }
 
-    private static void sort(Comparable[] a, int lo, int hi) {
+    public static void sort(Comparable<?>[] a) {
+        StdRandom.shuffle(a);
+        sort(a, 0, a.length - 1);
+//        System.out.println("快排后的结果：");
+        Operate.show(a);
+    }
+
+    private static void sort(Comparable<?>[] a, int lo, int hi) {
         if (hi <= lo) {
             return;
         }
@@ -41,22 +47,27 @@ public class QuickSort {
     }
 
     /**
-     * 切分数组
+     * 分区
      */
-    private static int partition(Comparable[] a, int lo, int hi) {
+    private static int partition(Comparable<?>[] a, int lo, int hi) {
         int i = lo, j = hi + 1;
-        Comparable v = a[lo];
+        Comparable<?> v = a[lo];
         while (true) {
+            // 游标i向右移动
             while (Operate.less(a[++i], v)) {
+                // i右移至右末端时，终止
                 if (i == hi) {
                     break;
                 }
             }
+            // 游标j向左移动
             while (Operate.less(v, a[--j])) {
+                // j左移至左末端时，终止
                 if (j == lo) {
                     break;
                 }
             }
+            // 游标相遇，表明区间只有一个元素
             if (i >= j) {
                 break;
             }
