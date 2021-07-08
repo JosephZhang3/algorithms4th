@@ -5,8 +5,9 @@ package chap3.binary_search_tree;
  *
  * @param <Key>
  * @param <Value>
+ * @author jianghao.zhang
  */
-public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
+public class BstApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Key, Value> {
 
     private class Node {
         private final Key key;
@@ -240,7 +241,8 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
      */
     private int rank(Node x, Key key) {
         if (x == null) {
-            return 0;// case:没有小于指定key的，说明已经搜索到了叶子
+            // case:没有小于指定key的，说明已经搜索到了叶子
+            return 0;
         }
         int cmp = key.compareTo(x.key);
         if (cmp < 0) {
@@ -273,18 +275,64 @@ public class BSTApiImpl<Key extends Comparable<Key>, Value> implements BSTApi<Ke
         x.left = deleteMin(x.left);
         // 递归往浅处跳出时，更新沿途每一个节点的计数器
         x.n = size(x.left) + size(x.right) + 1;
-        // 返回抛弃了最左末的节点的树
+        // 返回抛弃了最左末节点的树
         return x;
     }
 
     /**
      * 二叉查找树最难写的方法，删除任意节点
      *
-     * @param key 键
+     * @param key 将被删除的节点的键
      */
     @Override
     public void delete(Key key) {
+        // 把删除一个节点后的新树赋值给旧树
+        root = delete(root, key);
+    }
 
+    /**
+     * 从树x中删除一个键为k的节点。虽然复杂，画完步骤图后就容易理解
+     *
+     * @param x 想象成一棵🌲
+     * @param k 将被删除的节点的键
+     * @return 临时的处于中间状态的一颗树
+     */
+    private Node delete(Node x, Key k) {
+        // 递归结束条件
+        if (x == null) {
+            return null;
+        }
+        int cmp = k.compareTo(x.key);
+        if (cmp < 0) {
+            // 如果k代表的目标节点在x的左子树中，则把 x的左子树删除节点k 然后赋值给 原始的x的左子树Node对象
+            x.left = delete(x.left, k);
+        } else if (cmp > 0) {
+            x.right = delete(x.right, k);
+        } else {
+            // 简单情形之一
+            if (x.right == null) {
+                return x.left;
+            }
+            // 简单情形之二
+            if (x.left == null) {
+                return x.right;
+            }
+            // 情形一和二逻辑类似，都是把自己这个单节点删除，然后把（可能为空的）子树返回
+
+            // x的左右节点都非空，则x是一颗至少包含3节点的完整形式的（子）树
+            Node tmp = x;
+
+            // 赋值，变量节点x为 从被删除节点的右子树中取最小的一个节点（非树）
+            x = min(tmp.right);
+
+            // 该节点的右节点应该是 被删除节点的右子树继续删除了最小节点 之后得到的子树
+            x.right = deleteMin(tmp.right);
+
+            // 该节点的左子树应该是 被删除节点的左子树
+            x.left = tmp.left;
+        }
+        x.n = size(x.left) + size(x.right) + 1;
+        return x;
     }
 
 }

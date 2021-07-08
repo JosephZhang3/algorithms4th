@@ -1,11 +1,11 @@
 package test;
 
 
-import chap3.binary_search_tree.BSTApiImpl;
+import chap3.binary_search_tree.BstApiImpl;
 
 public class BstTest {
     public static void main(String[] args) {
-        BSTApiImpl<Integer, String> bst = new BSTApiImpl<>();
+        BstApiImpl<Integer, String> bst = new BstApiImpl<>();
         bst.put(32, "32");
         bst.put(1, "1");
         bst.put(6, "6");
