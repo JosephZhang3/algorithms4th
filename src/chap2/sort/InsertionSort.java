@@ -32,7 +32,8 @@ public class InsertionSort {
             for (int j = i; j > 0 && Operate.less(a[j], a[j - 1]); j--) {
                 Operate.exch(a, j, j - 1);
 
-                SortTest.show(a);
+//                SortTest.show(a);
+//                System.out.println();
             }
         }
     }

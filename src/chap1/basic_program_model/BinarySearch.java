@@ -74,9 +74,9 @@ public class BinarySearch {
 
 
         //循环非递归方式实现binarysearch
-//        int[] a = {4, 7, 8, 9, 11, 23};
-//        StdOut.println(rankLoop(8, a));
-        //StdOut.println("查找匹配元素索引" + rankRecursive(9, a, 0, a.length - 1));
+        int[] bs = {4, 7, 8, 9, 11, 23};
+        StdOut.println(rankLoop(8, bs));
+        StdOut.println("查找匹配到元素索引" + rankRecursive(9, bs, 0, bs.length - 1));
 
         In in = new In();
         int[] whiteList = in.readAllInts();//从文件中读取全部整数
